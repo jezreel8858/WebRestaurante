@@ -12,7 +12,15 @@ public class Mesa implements EntityClass{
 	private Long id;
 	private int numero;
 	private int capacidade;
+	private boolean perReserva;
 	
+	public Mesa() {
+		this.id = id;
+	}
+	
+	public Mesa(Long id) {
+		this.id = id;
+	}
 	public Long getId() {
 		return id;
 	}
@@ -30,6 +38,13 @@ public class Mesa implements EntityClass{
 	}
 	public void setCapacidade(int capacidade) {
 		this.capacidade = capacidade;
+	}
+	
+	public boolean isPerReserva() {
+		return perReserva;
+	}
+	public void setPerReserva(boolean perReserva) {
+		this.perReserva = perReserva;
 	}
 	
 	

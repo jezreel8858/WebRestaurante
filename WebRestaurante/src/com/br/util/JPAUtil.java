@@ -5,7 +5,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
 public class JPAUtil {
-	private static String PERSISTENCE_UNIT = "projetoSQLServer";
+	private static String PERSISTENCE_UNIT = "projetoPostgres";
 	private static  EntityManagerFactory factory = null;
 	
 	private JPAUtil(){

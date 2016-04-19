@@ -11,6 +11,7 @@ import javax.persistence.ManyToOne;
 @Entity(name="Cardapio")
 public class Cardapio implements EntityClass{
 	
+	
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
@@ -21,6 +22,10 @@ public class Cardapio implements EntityClass{
 	@JoinColumn(name="categoria_id")
 	private Categoria categoria;
 	
+	public Cardapio(){}
+	public Cardapio(Long id){
+		this.id = id;
+	}
 	public Long getId() {
 		return id;
 	}

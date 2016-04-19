@@ -1,15 +1,23 @@
 body{
+	width: 100%;
+    height: 100%;
     background-color: #11a6d4;
+    border: 0;
+    margin: 0;
 }
 #login-box{
     background-color: #1991b7;
     width: 380px;
     height: 260px;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 35%;
+	margin: auto;
     border-radius: 5px;
-    position: relative;
+	position: absolute;
+  	top: 0;
+  	left: 0;
+  	bottom: 0;
+  	right: 0;
+  
+
 }
 #login-box-interno{
     width:360px;

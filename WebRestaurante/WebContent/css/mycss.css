@@ -1,0 +1,58 @@
+html, body { height:100% }
+header {
+    margin-bottom: 54px;
+}
+#topo {
+    background: #49274A;
+    width: 100%;
+    height: 80px;
+    position: relative;
+    left: 0;
+    top: 0;
+    text-align: center;
+}
+#topo spam{
+    position: relative;
+    color: white;
+    top: 2em;
+}
+#topofixo{
+    display:inline-block;
+    background: #94618E;
+    position: absolute;
+    width: 100%;
+    top: 80px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+    z-index : 1;
+}
+.nav-link{
+    color: white;
+}
+.navbar ul li a:hover {
+    color: #2a0080 !important;
+}
+.dropdown-item{
+    color: black;
+}
+section{
+    position: relative;
+}
+.centrodiv
+{
+    width: 50%;
+    position: relative;
+    margin:0 auto;
+    padding: 1.5rem;
+    border-width: .2rem;
+    border: solid #f7f7f9;
+}
+.icon-tb{
+	padding: 0.4px;
+	margin-right: 4px;
+	width: 20px;
+}
+table{
+	margin-bottom: 0 !important;
+}
