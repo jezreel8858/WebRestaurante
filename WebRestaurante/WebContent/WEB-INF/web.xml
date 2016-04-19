@@ -46,7 +46,15 @@
     <servlet-name>removerMesa</servlet-name>
     <url-pattern>/removerMesa</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>cadastroCliente</servlet-name>
+    <servlet-class>com.br.servlets.CadastroClienteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cadastroCliente</servlet-name>
+    <url-pattern>/cadastroCliente</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
 </web-app>
