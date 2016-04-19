@@ -2,10 +2,9 @@
 
 body{
     background-color: #F4F4F4;
-
 }
 #control-top{
-    background-color: #11a6d4;
+    background-color: #69D2E7;
     width: 100%;
     height: 150px;
     margin-left: -50%;
@@ -28,8 +27,26 @@ body{
     font: bold 18px/45px sans-serif;
     border-bottom: 2px solid black;
 }
-#dv-numero{
-	margin-top: 20px;
-	margin-left: 24%;
-	margin-right: 0%
+#dv-corpo{
+    width: 588px;
+    height: 34px;
+    margin-top: 30px;
+    left: 50%;
+    margin-left: -294px;
+    margin-right: -294px;
+    position: absolute;
+}
+table#tbl-pedidos {
+    border: 1px solid #606060;
+    border-spacing: 0px;
+    margin-top: 30px;
+}
+table#tbl-pedidos td{
+    text-align: center;
+    border: 1px solid #606060;
+    width: 588px;
+    padding: 10px;
+}
+button#bnt-novo {
+    margin-top: 30px;
 }

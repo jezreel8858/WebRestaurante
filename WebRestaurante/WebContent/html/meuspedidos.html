@@ -5,8 +5,7 @@
 	<title>Tela Meus Pedidos</title>
 	<link rel="stylesheet" type="text/css" href="../css/meuspedidos.css">
 	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
-    <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css">
-    <script  type="text/javascript" src="../js/tab.js" ></script>
+
 </head>
 <body>
 	 <div id="control-top">
@@ -21,10 +20,10 @@
   			<li id="nav-tabs-sair" role="presentation" class="active"><a href="#">		Sair	 </a></li>  		
 		</ul>
     </nav>
-    <div id="pedidos-geral">
-    	<div id="meus-pedidos">    	 Meus Pedidos    	</div>
+
+	<div id="meus-pedidos">    	 Meus Pedidos    	</div>
     	<form class="form-inline" action="">
-   			<div class="form-group" id="dv-numero">
+   			<div class="form-group" id="dv-corpo">
    					<label for="cnum-pedido">Número do Pedido</label>
    				 	<input type="text" class="form-control" id="cnum-pedido" placeholder="Informe o número">
    				 	<label for="cstatus">Status</label>
@@ -35,19 +34,20 @@
 					  <option>Pendente</option>
 					</select>
    				 	<button type="submit" class="btn btn-pesquisar">Pesquisar</button>
-  			</div>  			
+					<button id="bnt-novo" type="submit" class="btn btn-pesquisar" > Novo </button>
+				<table id="tbl-pedidos">
+					<tr id="tr-topo" style="background-color: #C8C8A9;">
+						<td>Número</td>
+						<td>Data</td>
+						<td>Total(R$)</td>
+						<td>Status</td>
+						<td>Ações</td>
+					</tr>
+				</table>
+
+			</div>
     	</form>
-    	<button type="submit" class="btn btn-pesquisar" style="margin-top: 20px;margin-left: 24%;margin-right: 0%;"> Novo </button>
-    	<div id="dv-tbpedidos">
-    		<table style="border: 1px;" >
-    			    			
-    			<tr >
-    				<td >	numero	</td>
-    				<td >	data	</td>
-    				
-    			</tr>
-    		</table>
-    	</div>
-    </div>
+
+
 </body>
 </html>

@@ -5,8 +5,9 @@ body{
     background-color: #1991b7;
     width: 380px;
     height: 260px;
-    margin: auto;
-    margin-top: 20%;    
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 35%;
     border-radius: 5px;
     position: relative;
 }
