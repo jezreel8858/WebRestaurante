@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="UTF-8">
+	<title>Tela Meus Pedidos</title>
+	<link rel="stylesheet" type="text/css" href="../css/meuspedidos.css">
+	<link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-responsive.css">
+    <script  type="text/javascript" src="../js/tab.js" ></script>
+</head>
+<body>
+	 <div id="control-top">
+        <div id="control-top-texto">
+            Controle de Restaurante
+        </div>
+        <div id="control-top-texto-bemvindo">      	Bem vindo        </div>
+    </div>
+    <nav class="nav">
+    	<ul class="nav nav-tabs">
+  			<li id="nav-tabs-meuspedidos" role="presentation" class="active"><a href="#">		Meus Pedidos	 </a></li>
+  			<li id="nav-tabs-sair" role="presentation" class="active"><a href="#">		Sair	 </a></li>  		
+		</ul>
+    </nav>
+    <div id="pedidos-geral">
+    	<div id="meus-pedidos">    	 Meus Pedidos    	</div>
+    	<form class="form-inline" action="">
+   			<div class="form-group" id="dv-numero">
+   					<label for="cnum-pedido">Número do Pedido</label>
+   				 	<input type="text" class="form-control" id="cnum-pedido" placeholder="Informe o número">
+   				 	<label for="cstatus">Status</label>
+   				 	<select class="form-control" id="cstatus" style="">
+					  <option selected="selected">Todos</option>
+					  <option>Cancelado</option>
+					  <option>Atendido</option>
+					  <option>Pendente</option>
+					</select>
+   				 	<button type="submit" class="btn btn-pesquisar">Pesquisar</button>
+  			</div>  			
+    	</form>
+    	<button type="submit" class="btn btn-pesquisar" style="margin-top: 20px;margin-left: 24%;margin-right: 0%;"> Novo </button>
+    	<div id="dv-tbpedidos">
+    		<table style="border: 1px;" >
+    			    			
+    			<tr >
+    				<td >	numero	</td>
+    				<td >	data	</td>
+    				
+    			</tr>
+    		</table>
+    	</div>
+    </div>
+</body>
+</html>
