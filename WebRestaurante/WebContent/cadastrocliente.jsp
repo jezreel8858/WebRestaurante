@@ -1,16 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <%@ include file="header.jsp" %>
-
-    <div id="control-top">
-        <div id="control-top-texto">
-            Controle de Restaurante
-        </div>
-    </div>
-    <div id="novo-cliente">
-        Novo Cliente
-    </div>
-
+<script  type="text/javascript" src="js/mascaras.js" ></script>
+	<div class="centrodiv">
         <form name="formC"  id="formulario-cadastro" action="cadastroCliente" method="post" >
             <fieldset id="dados-acesso">
                 <legend style="font: bold 18px/45px sans-serif;">Dados de Acesso</legend>
@@ -24,7 +16,7 @@
                	<div class="input-group">
                 <p>     <label for="cNome">Nome:</label>    <input class="form-control" id="cNome" type="text" name="tNome" size="30" maxlength="40" ></p>
                 <p>     <label for="cTelefone">Telefone:</label>    <input class="form-control" id="cTelefone" type="text" name="tTelefone" size="11" maxlength="14" placeholder="(00)00000-0000" onkeypress="return mascaraTEL(this,'(##)#####-####')" ></p>
-                <p>     <label for="cData">Data de Nascimento</label>      <input class="form-control" id="cData" type="date" name="tName" ></p>
+                <p>     <label for="cData">Data de Nascimento</label>      <input class="form-control" id="cData" type="date" name="tData" ></p>
                 <p>     <label for="cEmail">Email:</label>   <input class="form-control" id="cEmail" type="email" name="tEmail" placeholder="nome@example.com" ></p>
                 </div>
             </fieldset>
@@ -56,9 +48,13 @@
                 </div>
             </fieldset>
              <div class="input-group">
-            <input name="bntCadastrar" id="bnt-enviar"  class="btn btn-default" type="button" value="Enviar" >
+            <input name="bntCadastrar" id="bnt-enviar"  class="btn btn-default" type="submit" value="Enviar" >
             <input name="bntVoltar" id="bnt-voltar"  class="btn btn-default" type="button" value="Voltar" >
             </div>
         </form>
+       </div>
+       <script src="js/bootstrap.min.js"></script>
+       
+<body>
 </body>
 </html>

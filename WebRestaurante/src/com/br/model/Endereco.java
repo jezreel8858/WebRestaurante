@@ -7,6 +7,7 @@ public class Endereco {
 	private String pais;
 	private String estado;
 	private String cidade;
+	private String bairro;
 	private String logradouro;
 	private String numero;
 	private String complemento;
@@ -54,8 +55,15 @@ public class Endereco {
 	public void setCep(String cep) {
 		this.cep = cep;
 	}
+	
+	public String getBairro() {
+		return bairro;
+	}
+	public void setBairro(String bairro) {
+		this.bairro = bairro;
+	}
 	public String toString(){
-		return String.format("Rua: %s\t%s\tComplemento: %s\nCEP: %s\nCidade: %s\nEstado: %s\nPais: %s", this.logradouro,this.numero,this.complemento,
+		return String.format("Rua: %s\t%s\tComplemento: %s\nBairro: %s\nCEP: %s\nCidade: %s\nEstado: %s\nPais: %s", this.logradouro,this.numero,this.complemento,this.bairro,
 				this.cep,this.cidade,this.estado,this.pais);
 	}
 }
