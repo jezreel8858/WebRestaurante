@@ -9,6 +9,13 @@ import javax.persistence.PrimaryKeyJoinColumn;
 public class Delivery extends Pedido {
 
 	private float troco;
+	
+	public Delivery() {
+	}
+	
+	public Delivery(Long id) {
+		this.setId(id);
+	}
 
 	@ManyToOne
 	private Cliente cliente;

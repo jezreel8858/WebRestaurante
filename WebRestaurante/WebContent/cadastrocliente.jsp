@@ -2,55 +2,112 @@
     pageEncoding="ISO-8859-1"%>
 <%@ include file="header.jsp" %>
 <script  type="text/javascript" src="js/mascaras.js" ></script>
+<link rel="stylesheet" type="text/css" href="css/cadastrocliente.css">
 	<div class="centrodiv">
-        <form name="formC"  id="formulario-cadastro" action="cadastroCliente" method="post" >
+        <form name="formC" class="form-inline"  id="formulario-cadastro" action="cadastroCliente" method="post" >
             <fieldset id="dados-acesso">
                 <legend style="font: bold 18px/45px sans-serif;">Dados de Acesso</legend>
-                <div class="input-group">
-                	<p>     <label for="cLogin">Login:</label>   <input class="form-control" id="cLogin" type="text" name="tLogin" size="16"  maxlength="20" placeholder="Login" ></p>
-                	<p>     <label for="cSenha">Senha:</label>   <input class="form-control" id="cSenha" type="password" name="tSenha" size="16"  maxlength="8" placeholder="Password" /></p>
+                <div class="form-group">
+                  <label for="cLogin" class="col-sm-2 form-control-label">Login:</label>
+                	<div class="col-sm-10">
+                	   <input class="form-control" id="cLogin" type="text" name="tLogin" size="16"  maxlength="20" placeholder="Login" >
+               	   </div>
+               	</div>
+               	<div class="form-group">
+                	<label for="cSenha" class="col-sm-2 form-control-label">Senha:</label> 
+                	<div class="col-sm-10">  
+                		<input class="form-control" id="cSenha" type="password" name="tSenha" size="16"  maxlength="8" placeholder="Password" style="margin-left: 10px;"/>
+                	</div>	
            	   </div>	
             </fieldset>
             <fieldset id="info-pessoal">
                <legend style="font: bold 18px/45px sans-serif;">Informações Pessoais</legend>
-               	<div class="input-group">
-                <p>     <label for="cNome">Nome:</label>    <input class="form-control" id="cNome" type="text" name="tNome" size="30" maxlength="40" ></p>
-                <p>     <label for="cTelefone">Telefone:</label>    <input class="form-control" id="cTelefone" type="text" name="tTelefone" size="11" maxlength="14" placeholder="(00)00000-0000" onkeypress="return mascaraTEL(this,'(##)#####-####')" ></p>
-                <p>     <label for="cData">Data de Nascimento</label>      <input class="form-control" id="cData" type="date" name="tData" ></p>
-                <p>     <label for="cEmail">Email:</label>   <input class="form-control" id="cEmail" type="email" name="tEmail" placeholder="nome@example.com" ></p>
+               	<div class="form-group" >
+          	     	<label for="cNome" class="col-sm-2 form-control-label">Nome:</label>    
+	           	     	<div class="col-sm-10"> 
+	            	     <p>	<input class="form-control" id="cNome" type="text" name="tNome" size="30" maxlength="30" > </p>
+						</div>
+				
+					<label for="cTelefone" class="col-sm-2 form-control-label">Telefone:</label>    
+						<div class="col-sm-10"> 	
+						<p>	<input class="form-control" id="cTelefone" type="text" name="tTelefone" size="11" maxlength="14" placeholder="(00)00000-0000" onkeypress="return mascaraTEL(this,'(##)#####-####')" > </p>
+						</div>
+				</div>
+				<div class="form-group" >                    
+                    <label for="cEmail" class="col-sm-2 form-control-label">Email:</label> 
+                    	<div class="col-sm-10"> 
+                    	<p>	<input class="form-control" id="cEmail" type="email" name="tEmail" placeholder="nome@example.com" > </p>
+               	 		</div>
+           	 		<label for="cData" class="col-sm-2 form-control-label">Data de Nascimento</label>  
+                    	<div class="col-sm-10"> 
+                        <p>	<input class="form-control" id="cData" type="date" name="tData" > </p>
+               	 		</div>
                 </div>
             </fieldset>
-            <fieldset name="fieldEndereco" id="endereco">
+            <fieldset name="fieldEndereco" id="endereco" >
                 <legend style="font: bold 18px/45px sans-serif;">Endereço</legend>
-                <div class="input-group">
-                <p>     <label for="cRua">Rua:</label>     <input class="form-control" id="cRua" type="text" name="tRua" ></p>
-                <p>     <label for="cNumero">Número:</label>      <input class="form-control" id="cNumero" type="text" name="tNumero"></p>
-                <p>     <label for="cComplemento">Complemento:</label>     <input class="form-control" id="cComplemento" type="text" name="tComplemento" ></p>
-                <p>     <label for="cBairro">Bairro:</label>      <input class="form-control" id="cBairro" type="text" name="tBairro" ></p>
-                <p>     <label for="cCep">CEP:</label>     <input class="form-control" id="cCep" type="text" name="tCep" size="6" maxlength="9" placeholder="00000-000" onkeypress="return mascaraCEP(this,'#####-###')" ></p>
-                <p>     <label for="cPais">País:</label>    <input class="form-control" id="cPais" type="text" name="tPais"> </p>
-                <p>     <label for="cEst" style="margin-top: 20px;">Estado:</label>
-                    <select id="cEst" name="tEst">
-                        <option value="DF" >Distrito Federal</option>
-                        <option value="MT">Mato Grosso</option>
-                        <option value="PB" selected>Paraíba</option>
-                        <option value="PE">Pernambuco</option>
-                        <option value="RJ">Rio de Janeiro</option>
-                        <option value="SP">São Paulo</option>
-                    </select>
-                </p>
-                <p><label for="cCidade">Cidade:</label> <input class="form-control" id="cCidade" type="text" name="tCidade" list="lisCidade">
-                        <datalist  id="lisCidade" >
-                            <option value="João Pessoa">João Pessoa</option>
-                            <option value="São Paulo">São Paulo</option>
-                        </datalist>
-                </p>
-                </div>
+                <div class="form-group">
+                     <label for="cRua" class="col-sm-2 form-control-label">Rua:</label>     
+                     <div class="col-sm-10"> 
+                        <p>	<input class="form-control" id="cRua" type="text" name="tRua" > </p>
+               		 </div>
+               
+                     <label for="cNumero" class="col-sm-2 form-control-label">Número:</label>  
+                     <div class="col-sm-10"> 
+                     	<p>	<input class="form-control" id="cNumero" type="text" name="tNumero"> </p>
+                	 </div>
+                
+                     <label for="cComplemento" class="col-sm-2 form-control-label">Complemento:</label>     
+                     <div class="col-sm-10"> 
+                     	<p>	<input class="form-control" id="cComplemento" type="text" name="tComplemento" > </p>
+                	 </div>
+                
+                     <label for="cBairro" class="col-sm-2 form-control-label">Bairro:</label>    
+                     <div class="col-sm-10"> 
+                     	<p>	<input class="form-control" id="cBairro" type="text" name="tBairro" > </p>
+                	 </div>
+                
+                     <label for="cCep" class="col-sm-2 form-control-label">CEP:</label>   
+                     <div class="col-sm-10">   
+                     	<p>	<input class="form-control" id="cCep" type="text" name="tCep" size="6" maxlength="9" placeholder="00000-000" onkeypress="return mascaraCEP(this,'#####-###')" > </p>
+                	 </div>
+               	
+                     <label for="cPais" class="col-sm-2 form-control-label">País:</label>
+                     <div class="col-sm-10"> 
+                     	<p> <input class="form-control" id="cPais" type="text" name="tPais"> </p>
+                	 </div>
+               	 
+	                     <label for="cEst"  class="col-sm-2 form-control-label">Estado:</label>
+	                   	 <div class="col-sm-10">
+	                   	 <p>
+		                   	 <select id="cEst" name="tEst" class="form-control">
+		                        <option value="DF" >Distrito Federal</option>
+		                        <option value="MT">Mato Grosso</option>
+		                        <option value="PB" selected>Paraíba</option>
+		                        <option value="PE">Pernambuco</option>
+		                        <option value="RJ">Rio de Janeiro</option>
+		                        <option value="SP">São Paulo</option>
+	                    	 </select>
+                    	  </p>
+	                	</div>
+	                	
+	                	<label for="cCidade" class="col-sm-2 form-control-label">Cidade:</label>
+	                	<div class="col-sm-10"> 
+	                		<input class="form-control" id="cCidade" type="text" name="tCidade" list="lisCidade">
+	                		 <p>
+		                		 <datalist  id="lisCidade"  >
+			                            <option value="João Pessoa">João Pessoa</option>
+			                            <option value="São Paulo">São Paulo</option>
+		                       	 </datalist>
+	                       	 </p>
+	                	</div>
+                	
+               	</div>
+                	
             </fieldset>
-             <div class="input-group">
-            <input name="bntCadastrar" id="bnt-enviar"  class="btn btn-default" type="submit" value="Enviar" >
-            <input name="bntVoltar" id="bnt-voltar"  class="btn btn-default" type="button" value="Voltar" >
-            </div>
+            		
+           	<input name="bntEnviar" id="bnt-enviar"  class="btn btn-info" type="submit" value="Enviar" >
+       		<a id="bnt-voltar" class="btn btn-info" role="button" href="index.jsp" >Voltar</a>
         </form>
        </div>
        <script src="js/bootstrap.min.js"></script>

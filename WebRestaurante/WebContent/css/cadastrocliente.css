@@ -1,40 +1,17 @@
 @charset "UTF-8";
 
-body{
-    background-color: #F4F4F4;
 
-}
-#control-top{
-    background-color: #11a6d4;
-    width: 100%;
-    height: 150px;
-    margin-left: -50%;
-    left: 50%;
-    position: relative;
-    overflow: hidden;
-}
-#control-top-texto{
-    margin-top: 50px;
-    text-align: center;
-    font: bold 24px/45px sans-serif;
-}
-#novo-cliente{
-    margin-top: 20px;
-    font: bold 18px/45px sans-serif;
-    border-bottom: 2px solid black;
-}
 #formulario-cadastro{
 	top: 500px;
-	width: 500px;
+	width: 600px;
     margin: auto;
 }
-#bnt-enviar{
-	margin-top: 15px;
-	margin-left: 85%;
-    left: 250px;
+#info-pessoal{
+	margin-top: 20px;
+}
+#endereco{
+	margin-top: 20px;
 }
 #bnt-voltar{
-	margin-top: -57px;
-	margin-left: 35%;
-    left: 250px;
+	margin-left: 25px;
 }
