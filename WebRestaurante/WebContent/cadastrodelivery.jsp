@@ -7,34 +7,32 @@
 
 <%@ include file="header.jsp" %>
 	
-	<% 
-    	//Delivery delivery = (Delivery) request.getAttribute("delivery");
-     	//List<ItemCardapio> meusPedidos = request.getAttribute("itemPedidos");
-     	//ItemCardapio itemC = new ItemCardapio();  
-   	%>
-   
+	
     <section>
+    	<input style="display: none" id="tdNome" >
+    	<input style="display: none" id="tdQtd" >
+    	<input style="display: none" id="tdPreco" >
         <div class="centrodiv">
             <form action="cadastroDelivery" method="post">
             	<input type='hidden' name='id'  />
                 <div class="form-group row">
-                    <label for="inputNome" class="col-sm-1 form-control-label">Produto</label>
+                    <label for="inputNome" style="width: 80px;margin-left: 4px;" class="col-sm-1 form-control-label">Produto</label>
                  	<div class="col-sm-2">
-                         <select id="cCardapio" name="tcardapio" class="form-control" >
+                         <select id="cCardapio" style="width: 110px;" name="cardapio" class="form-control" >
                        		 	<%
 			   						List<Cardapio> cardapios = (List<Cardapio>) CardapioService.listar();                    		
 								%>
 								<% for (Cardapio cardapio : cardapios){ %>
-		                        <option value="<%= cardapio.getId()%>" ><%= cardapio.getNome()%></option>
+		                        	<option  value="<%= cardapio.getId()%>" ><%= cardapio.getNome()%></option>
 		                        <%}%>
                     	 </select>
                     </div>
-                    <label for="inputQuantidade" class="col-sm-2 form-control-label">Quantidade</label>
+                    <label for="inputQuantidade"  style="width: 110px;margin-left: 20px;" class="col-sm-2 form-control-label">Quantidade</label>
                     <div class="col-sm-2">
                         <input type="number" min=0  class="form-control" id="inputQuantidade" placeholder="00" name="quantidade" required="required" >
                     </div>
-                  	<div class="col-sm-offset-0 col-sm-5">
-                        <button type="button" class="btn btn-secondary" >Adicionar Item</button>
+                  	<div class="col-sm-offset-0 col-sm-5" style="width: 80px;margin-left: 60px;">
+                        <button type="submit" class="btn btn-secondary" >Adicionar Item</button>
                     </div>
                 </div>
                 <table class="table table-sm">
@@ -47,7 +45,7 @@
 	            </tr>
 	            </thead>
 	            <tbody>
-				<%//for (ItemCardapio itemCardapio : meusPedidos) {%>
+
 	            <tr>
 	            	<td></td>
 	            	<td></td>
