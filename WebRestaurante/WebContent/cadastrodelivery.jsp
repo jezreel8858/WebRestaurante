@@ -7,37 +7,40 @@
 
 <%@ include file="header.jsp" %>
 	
+	<% List<ItemCardapio> lista = (ArrayList<ItemCardapio>)request.getSession().getAttribute("itemCardapio"); %>
 	
     <section>
     	<input style="display: none" id="tdNome" >
     	<input style="display: none" id="tdQtd" >
     	<input style="display: none" id="tdPreco" >
         <div class="centrodiv">
-            <form action="cadastroDelivery" method="post">
+        	<% List<Cardapio> cardapios ; %>
+            <form action="AdicionarItemCardapioDelivery" method="post">
             	<input type='hidden' name='id'  />
                 <div class="form-group row">
-                    <label for="inputNome" style="width: 80px;margin-left: 4px;" class="col-sm-1 form-control-label">Produto</label>
-                 	<div class="col-sm-2">
-                         <select id="cCardapio" style="width: 110px;" name="cardapio" class="form-control" >
+                    <label for="inputNome"  class="col-sm-2	 form-control-label">Produto</label>
+                 	<div class="col-sm-3" >
+                         <select id="cCardapio"  name="cardapio" class="form-control" >
                        		 	<%
-			   						List<Cardapio> cardapios = (List<Cardapio>) CardapioService.listar();                    		
+			   						cardapios = (List<Cardapio>) CardapioService.listar();                    		
 								%>
 								<% for (Cardapio cardapio : cardapios){ %>
-		                        	<option  value="<%= cardapio.getId()%>" ><%= cardapio.getNome()%></option>
+		                        	<option  value="<%= cardapio.getNome()%>" ><%= cardapio.getNome()%></option>
+		                        	 
 		                        <%}%>
                     	 </select>
                     </div>
-                    <label for="inputQuantidade"  style="width: 110px;margin-left: 20px;" class="col-sm-2 form-control-label">Quantidade</label>
+                    <label for="inputQuantidade"   class="col-sm-2 form-control-label">Quantidade</label>
                     <div class="col-sm-2">
                         <input type="number" min=0  class="form-control" id="inputQuantidade" placeholder="00" name="quantidade" required="required" >
                     </div>
-                  	<div class="col-sm-offset-0 col-sm-5" style="width: 80px;margin-left: 60px;">
-                        <button type="submit" class="btn btn-secondary" >Adicionar Item</button>
+                  	<div class="col-sm-offset-0 col-sm-3" >
+                        <button style="margin-left: 30px;" type="submit" class="btn btn-secondary">Adicionar Item</button>
                     </div>
                 </div>
                 <table class="table table-sm">
 	            <thead>
-	            <tr>
+	            <tr>	            
 	                <th>Produto</th>
 	                <th>Quantidade</th>
 	                <th>Total</th>
@@ -45,19 +48,22 @@
 	            </tr>
 	            </thead>
 	            <tbody>
-
+			<% 
+				if(lista!=null){					
+					for (ItemCardapio item : lista){				
+			%>
 	            <tr>
-	            	<td></td>
-	            	<td></td>
-	            	<td></td>
-	               <td><a href="cadastroDelivery?id="><img src="image/edit.png" class="icon-tb"></a> <a href="removerDelivery?id="><img src="image/delete.png" class="icon-tb"></a></td>
-	               
+	            	<td><%= item.getCardapio().getNome()%></td>
+	            	<td><%= item.getQtd()%></td>
+	            	<td><%= item.getQtd()*item.getCardapio().getPreco()%></td>
+	                <td><a href="RemoverItemCardapioDelivery?id=<%=item.getIdC()%>"><img src="image/delete.png" class="icon-tb"></a></td>	               
 	            </tr>
+	            <%	}}%>
 	            </tbody>
 	        </table>
                 <div class="form-group row">
                     <div class="col-sm-offset-2 col-sm-10">
-                        <button type="submit" class="btn btn-secondary">Finalizar</button>
+                        <button style="margin-left: 85%;margin-top: 30px;" type="submit" class="btn btn-secondary">Finalizar</button>
                     </div>
                 </div>
             </form>

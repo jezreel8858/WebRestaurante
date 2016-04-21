@@ -15,7 +15,7 @@ public class Mesa implements EntityClass{
 	private boolean perReserva;
 	
 	public Mesa() {
-		this.id = id;
+		
 	}
 	
 	public Mesa(Long id) {

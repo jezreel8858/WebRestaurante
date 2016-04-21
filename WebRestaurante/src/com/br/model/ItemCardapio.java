@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 
 @Entity(name="ItemCardapio")
 public class ItemCardapio implements EntityClass{
@@ -19,6 +20,17 @@ public class ItemCardapio implements EntityClass{
 	@ManyToOne
 	private Cardapio cardapio;
 	
+	@Transient
+	private int idC;
+	
+	public int getIdC() {
+		return idC;
+	}
+
+	public void setIdC(int idC) {
+		this.idC = idC;
+	}
+
 	public float getSubTotal(){			// Padrao Expert
 		return cardapio.getPreco()*qtd;
 	}

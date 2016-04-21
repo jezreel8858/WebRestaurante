@@ -18,6 +18,9 @@ public class CadastrarDeliveryServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id = request.getParameter("id");
 		
+		
+		
+		
 		if(id != null){
 			Delivery delivery = DeliveryService.procurar(new Delivery(new Long(id)));
 			request.setAttribute("delivery", delivery);

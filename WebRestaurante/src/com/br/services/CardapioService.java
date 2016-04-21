@@ -93,6 +93,23 @@ public class CardapioService {
 		return result;
 	}
 	
+	public static Cardapio procurarPorNome(String nome) {
+		
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		Cardapio result = null;
+		try{
+			CardapioDAO cardapioDAO = new CardapioDAO(manager);	
+			result = (Cardapio)cardapioDAO.procurarPorNome(nome);
+			
+		}catch (Exception e){
+			
+		}
+		finally{
+			manager.close();
+		}
+		return result;
+	}
+	
 	public static List<Cardapio> listar(){
 		EntityManager  manager =  JPAUtil.getEntityManager();
 		List<Cardapio> result = Collections.emptyList();

@@ -61,6 +61,22 @@
     <servlet-name>cadastroDelivery</servlet-name>
     <url-pattern>/cadastroDelivery</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <servlet-name>AdicionarItemCardapioDelivery</servlet-name>
+    <servlet-class>com.br.servlets.AdicionarItemCardapioDeliveryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdicionarItemCardapioDelivery</servlet-name>
+    <url-pattern>/AdicionarItemCardapioDelivery</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>RemoverItemCardapioDelivery</servlet-name>
+    <servlet-class>com.br.servlets.RemoverItemCardapioDeliveryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>RemoverItemCardapioDelivery</servlet-name>
+    <url-pattern>/RemoverItemCardapioDelivery</url-pattern>
+  </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.jsp</welcome-file>
   </welcome-file-list>
