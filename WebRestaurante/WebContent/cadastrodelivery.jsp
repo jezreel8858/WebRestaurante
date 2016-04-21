@@ -18,14 +18,14 @@
             <form action="AdicionarItemCardapioDelivery" method="post">
             	<input type='hidden' name='id'  />
                 <div class="form-group row">
-                    <label for="inputNome"  class="col-sm-2	 form-control-label">Produto</label>
-                 	<div class="col-sm-3" >
+                    <label for="inputNome"  class="col-sm-1	 form-control-label">Produto</label>
+                 	<div class="col-sm-4" >
                          <select id="cCardapio"  name="cardapio" class="form-control" >
                        		 	<%
 			   						cardapios = (List<Cardapio>) CardapioService.listar();                    		
 								%>
 								<% for (Cardapio cardapio : cardapios){ %>
-		                        	<option  value="<%= cardapio.getNome()%>" ><%= cardapio.getNome()%></option>
+		                        	<option  value="<%= cardapio.getNome()%>" ><%= cardapio.getNome()+" - R$: "+ cardapio.getPreco()%></option>
 		                        	 
 		                        <%}%>
                     	 </select>
@@ -34,7 +34,7 @@
                     <div class="col-sm-2">
                         <input type="number" min=0  class="form-control" id="inputQuantidade" placeholder="00" name="quantidade" required="required" >
                     </div>
-                  	<div class="col-sm-offset-0 col-sm-3" >
+                  	<div class="col-sm-offset-0 col-sm-2" >
                         <button style="margin-left: 30px;" type="submit" class="btn btn-secondary">Adicionar Item</button>
                     </div>
                 </div>
