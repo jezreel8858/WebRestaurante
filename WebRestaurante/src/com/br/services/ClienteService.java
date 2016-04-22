@@ -97,6 +97,23 @@ public class ClienteService {
 		return result;
 	}
 	
+	public  static Cliente procurarPorLoginSenha(String login,String senha) {
+		
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		Cliente result = null;
+		try{
+			ClienteDAO clienteDAO = new ClienteDAO(manager);
+			result = clienteDAO.procurarLoginSenha(login, senha);
+			
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		finally{
+			manager.close();
+		}
+		return result;
+	}
+	
 	public static List<Cliente> listar(){
 		EntityManager  manager =  JPAUtil.getEntityManager();
 		List<Cliente> result = Collections.emptyList();

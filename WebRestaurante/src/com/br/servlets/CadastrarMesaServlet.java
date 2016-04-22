@@ -35,7 +35,6 @@ public class CadastrarMesaServlet extends HttpServlet{
 		String reserva =  request.getParameter("reserva");
 		
 		Mesa mesa = new Mesa();
-		System.out.println(nome);
 		mesa.setNumero(Integer.parseInt(nome));
 		mesa.setCapacidade(Integer.parseInt(preco));
 		

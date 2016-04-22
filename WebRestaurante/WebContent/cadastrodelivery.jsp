@@ -1,18 +1,17 @@
+<%@page import="com.br.model.Usuario"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="javax.smartcardio.Card"%>
 <%@page import="com.br.services.CardapioService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="com.br.model.Delivery,java.util.List,com.br.model.Cardapio,com.br.model.ItemCardapio"%>
+<%@ page import="com.br.model.Delivery,java.util.List,com.br.model.Cardapio,com.br.model.ItemCardapio,com.br.model.Cliente"%>
 
 <%@ include file="header.jsp" %>
 	
 	<% List<ItemCardapio> lista = (ArrayList<ItemCardapio>)request.getSession().getAttribute("itemCardapio"); %>
-	
+	<% Cliente cliente = (Cliente)request.getSession().getAttribute("Usuario"); %>
     <section>
-    	<input style="display: none" id="tdNome" >
-    	<input style="display: none" id="tdQtd" >
-    	<input style="display: none" id="tdPreco" >
+    	<label style="font: italic 20px;">Bem Vindo <%= cliente.getNome() %></label>
         <div class="centrodiv">
         	<% List<Cardapio> cardapios ; %>
             <form action="AdicionarItemCardapioDelivery" method="post">
@@ -25,14 +24,13 @@
 			   						cardapios = (List<Cardapio>) CardapioService.listar();                    		
 								%>
 								<% for (Cardapio cardapio : cardapios){ %>
-		                        	<option  value="<%= cardapio.getNome()%>" ><%= cardapio.getNome()+" - R$: "+ cardapio.getPreco()%></option>
-		                        	 
+		                        	<option  value="<%= cardapio.getNome()%>" ><%= cardapio.getNome()+" - R$: "+ cardapio.getPreco()%></option>		                        	 
 		                        <%}%>
                     	 </select>
                     </div>
                     <label for="inputQuantidade"   class="col-sm-2 form-control-label">Quantidade</label>
                     <div class="col-sm-2">
-                        <input type="number" min=0  class="form-control" id="inputQuantidade" placeholder="00" name="quantidade" required="required" >
+                        <input type="number" min=1 value="1"   class="form-control" id="inputQuantidade" placeholder="00" name="quantidade" required="required" >
                     </div>
                   	<div class="col-sm-offset-0 col-sm-2" >
                         <button style="margin-left: 30px;" type="submit" class="btn btn-secondary">Adicionar Item</button>

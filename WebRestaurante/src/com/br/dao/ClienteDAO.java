@@ -1,6 +1,7 @@
 package com.br.dao;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import com.br.model.Cliente;
@@ -23,6 +24,17 @@ public class ClienteDAO extends GenericDAO<Cliente>{
 		
 		return ((long) result.getSingleResult()) != 0;
 	}
-	
+	public Cliente procurarLoginSenha(String login,String senha){
+		try{
+		Query query = manager.createQuery("SELECT c FROM Cliente c WHERE c.login.login = :login and c.login.senha = :senha");
+		query.setParameter("login",login);
+		query.setParameter("senha",senha);
+		
+		return  (Cliente) query.getSingleResult();
+		
+	}catch (NoResultException nre){
+		return null;
+		}
+	}
 
 }
