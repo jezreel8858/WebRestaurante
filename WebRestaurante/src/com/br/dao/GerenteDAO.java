@@ -23,4 +23,12 @@ public class GerenteDAO extends GenericDAO<Gerente> {
 		
 		return ((long) result.getSingleResult()) != 0;
 	}
+
+	public Gerente procurarPorLoginSenha(String login, String senha) {
+		Query result = null;
+		result = this.manager.createQuery("SELECT g FROM Gerente g WHERE g.login.login = :login and g.login.senha = :senha");
+		result.setParameter("login", login);
+		result.setParameter("senha", senha);
+		return (Gerente) result.getSingleResult();
+	}
 }

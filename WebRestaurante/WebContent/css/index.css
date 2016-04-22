@@ -15,8 +15,8 @@ body{
   	left: 0;
   	bottom: 0;
   	right: 0;
-		border:solid 1px;
-		border-radius:20px;
+	border:solid 1px;
+	border-radius:20px;
 }
 #login-box-interno-label{
 		text-align: center;

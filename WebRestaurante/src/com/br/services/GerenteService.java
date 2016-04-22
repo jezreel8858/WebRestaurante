@@ -108,4 +108,20 @@ public class GerenteService {
 		}
 		return result;
 	}
+
+	public static Gerente procurarPorLoginSenha(String login, String senha) {
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		Gerente result = null;
+		try{
+			GerenteDAO gerenteDAO = new GerenteDAO(manager);			
+			result = gerenteDAO.procurarPorLoginSenha(login,senha);	
+			
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		finally{
+			manager.close();
+		}
+		return result;
+	}
 }

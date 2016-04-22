@@ -7,6 +7,7 @@
     <title>Tela Login</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/bootstrap4.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 	 <div id="login-box">
@@ -18,14 +19,17 @@
 				  <div class="form-group">
 				    <label class="col-sm-2 control-label">Login</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" name="login" placeholder="Login">
+				      <input type="text" class="form-control" name="login" placeholder="Login" required="required" >
 				    </div>
 				  </div>
 				  <div class="form-group" >
 				    <label  class="col-sm-2 control-label" style="margin-top: 15px;">Senha</label>
 				    <div class="col-sm-9">
-				      <input style="margin-top: 15px;" type="password" class="form-control" name="senha" placeholder="Senha">
+				      <input style="margin-top: 15px;" type="password" class="form-control" name="senha" placeholder="Senha" required="required">
 				    </div>
+				  </div>
+				  <div>
+				  
 				  </div>
 				  <div class="form-group">
 				    <div class="col-sm-offset-2 col-sm-12">

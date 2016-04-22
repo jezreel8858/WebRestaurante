@@ -110,4 +110,20 @@ public class FuncionarioService {
 		}
 		return result;
 	}
+
+	public static Funcionario procurarPorLoginSenha(String login, String senha) {
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		Funcionario result = null;
+		try{
+			FuncionarioDAO funcionarioDAO = new FuncionarioDAO(manager);			
+			result = funcionarioDAO.procurarPorLoginSenha(login,senha);
+			
+		}catch (Exception e){
+
+		}
+		finally{
+			manager.close();
+		}
+		return result;
+	}
 }

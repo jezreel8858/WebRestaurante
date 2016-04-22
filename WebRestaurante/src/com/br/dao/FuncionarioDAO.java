@@ -23,4 +23,12 @@ public class FuncionarioDAO extends GenericDAO<Funcionario>{
 		
 		return ((long) result.getSingleResult()) != 0;
 	}
+
+	public Funcionario procurarPorLoginSenha(String login, String senha) {
+		Query result = null;
+		result = this.manager.createQuery("SELECT f FROM Funcionario f WHERE f.login.login = :login and f.login.senha = :senha");
+		result.setParameter("login", login);
+		result.setParameter("senha", senha);
+		return (Funcionario) result.getSingleResult();
+	}
 }
