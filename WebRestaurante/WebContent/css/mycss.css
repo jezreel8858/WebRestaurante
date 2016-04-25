@@ -11,7 +11,7 @@ header {
     top: 0;
     text-align: center;
 }
-#topo spam{
+#topo span{
     position: relative;
     color: white;
     top: 2em;
@@ -31,7 +31,22 @@ header {
     color: white;
 }
 .navbar ul li a:hover {
-    color: #2a0080 !important;
+    background-color: #49274A !important;
+    color: white;
+}
+.navbar ul li a:focus {
+    background-color: #49274A !important;
+}
+.active{
+  background-color:#49274A !important;
+}
+.nav-pills .nav-link.active, 
+.nav-pills .nav-link.active:focus, 
+.nav-pills .nav-link.active:hover, 
+.nav-pills .nav-item.open .nav-link, 
+.nav-pills .nav-item.open .nav-link:focus, 
+.nav-pills .nav-item.open .nav-link:hover{
+	background-color: #49274A !important;
 }
 .dropdown-item{
     color: black;

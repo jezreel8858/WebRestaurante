@@ -1,42 +1,31 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="com.br.model.Mesa"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%@ include file="header.jsp" %>
-	<% 
-    	Mesa mesa = (Mesa) request.getAttribute("mesa");
-     
-    %>
     <section>
         <div class="centrodiv">
             <form action="cadastroMesa" method="post">
-            	<input type='hidden' name='id' value="<%=mesa == null ? "" : mesa.getId()%>" />
+            	<input type='hidden' name='id' value="${mesa.id}" />
                 <div class="form-group row">
                     <label for="inputNome" class="col-sm-2 form-control-label">Numero</label>
                     <div class="col-sm-10">
-                        <input type="number" class="form-control" id="inputNome" placeholder="Numero" name="numero" required="required" value="<%=mesa == null ? "" : mesa.getNumero()%>">
+                        <input type="number" class="form-control" id="inputNome" placeholder="000" name="numero" required="required" value="${mesa.numero}">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputPreco" class="col-sm-2 form-control-label">Capacidade</label>
                     <div class="col-sm-4">
-                        <input type="number" min=0 class="form-control" id="inputPreco" placeholder="00" name="capacidade" required="required" value="<%=mesa == null ? "" : mesa.getCapacidade()%>">
+                        <input type="number" min=0 class="form-control" id="inputPreco" placeholder="00" name="capacidade" required="required" value="${mesa.capacidade}">
                     </div>
                     <label for="inputCategoria" class="col-sm-2 form-control-label">De reserva?</label>
                     <div class="col-sm-4">
                         <select class="form-control" id="inputCategoria" name="reserva">
-                            <option value="0" <% 
-                            						if(mesa != null )
-                            							if(mesa.isPerReserva())
-                            								out.write("selected");
-                            						
-                            				  %>
+                            <option value="0" <c:if test="${mesa.perReserva == true}">Selected</c:if>
                             >Sim</option>
-                            <option value="1" <% 
-                            						if(mesa != null )
-                            							if(!mesa.isPerReserva())
-                            								out.write("selected");
-                            				  %>
+                            <option value="1" <c:if test="${mesa.perReserva == false}">Selected</c:if>
                             >Não</option>
                         </select>
                     </div>

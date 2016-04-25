@@ -1,31 +1,22 @@
-<%@page import="com.br.model.Usuario"%>
-<%@page import="java.util.ArrayList"%>
-<%@page import="javax.smartcardio.Card"%>
-<%@page import="com.br.services.CardapioService"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="com.br.model.Delivery,java.util.List,com.br.model.Cardapio,com.br.model.ItemCardapio,com.br.model.Cliente"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%@ include file="header.jsp" %>
 	
-	<% List<ItemCardapio> lista = (ArrayList<ItemCardapio>)request.getSession().getAttribute("itemCardapio"); %>
-	<% Cliente cliente = (Cliente)request.getSession().getAttribute("Usuario"); %>
     <section>
-    	<label style="font: italic 20px;">Bem Vindo <%= cliente.getNome() %></label>
         <div class="centrodiv">
-        	<% List<Cardapio> cardapios ; %>
-            <form action="AdicionarItemCardapioDelivery" method="post">
+            <form action="cadastroDelivery" method="post">
             	<input type='hidden' name='id'  />
                 <div class="form-group row">
                     <label for="inputNome"  class="col-sm-1	 form-control-label">Produto</label>
                  	<div class="col-sm-4" >
                          <select id="cCardapio"  name="cardapio" class="form-control" >
-                       		 	<%
-			   						cardapios = (List<Cardapio>) CardapioService.listar();                    		
-								%>
-								<% for (Cardapio cardapio : cardapios){ %>
-		                        	<option  value="<%= cardapio.getNome()%>" ><%= cardapio.getNome()+" - R$: "+ cardapio.getPreco()%></option>		                        	 
-		                        <%}%>
+								<c:forEach var="cardapio" items="${cardapios}">
+		                        	<option  value="${cardapio.id}" >${cardapio.nome}</option>		                        	 
+		                        </c:forEach>
                     	 </select>
                     </div>
                     <label for="inputQuantidade"   class="col-sm-2 form-control-label">Quantidade</label>
@@ -36,7 +27,9 @@
                         <button style="margin-left: 30px;" type="submit" class="btn btn-secondary">Adicionar Item</button>
                     </div>
                 </div>
-                <table class="table table-sm">
+                
+            </form>
+            <table class="table table-sm">
 	            <thead>
 	            <tr>	            
 	                <th>Produto</th>
@@ -46,17 +39,14 @@
 	            </tr>
 	            </thead>
 	            <tbody>
-			<% 
-				if(lista!=null){					
-					for (ItemCardapio item : lista){				
-			%>
-	            <tr>
-	            	<td><%= item.getCardapio().getNome()%></td>
-	            	<td><%= item.getQtd()%></td>
-	            	<td><%= item.getQtd()*item.getCardapio().getPreco()%></td>
-	                <td><a href="RemoverItemCardapioDelivery?id=<%=item.getIdC()%>"><img src="image/delete.png" class="icon-tb"></a></td>	               
-	            </tr>
-	            <%	}}%>
+	           	<c:forEach var="item" items="${itens}">
+		            <tr>
+		            	<td>${item.cardapio.nome}</td>
+		            	<td>${item.qtd}</td>
+		            	<td>${item.qtd*item.cardapio.preco}</td>
+		                <td><a href="RemoverItemCardapioDelivery?id=${item.cardapio.id}"><img src="image/delete.png" class="icon-tb"></a></td>	               
+		            </tr>
+				</c:forEach>
 	            </tbody>
 	        </table>
                 <div class="form-group row">
@@ -64,7 +54,6 @@
                         <button style="margin-left: 85%;margin-top: 30px;" type="submit" class="btn btn-secondary">Finalizar</button>
                     </div>
                 </div>
-            </form>
         </div>
     </section>
 

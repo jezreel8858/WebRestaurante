@@ -17,21 +17,17 @@ public class RemoverItemCardapioDeliveryServlet extends HttpServlet {
 
 	@SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		ArrayList<ItemCardapio> lista = (ArrayList<ItemCardapio>) request.getSession().getAttribute("itemCardapio");
+		ArrayList<ItemCardapio> lista = (ArrayList<ItemCardapio>) request.getSession().getAttribute("itens");
 		
 		String id = request.getParameter("id");
 		int idC = Integer.valueOf(id);
-		
 		for (int x =0 ; x< lista.size() ; x++) {
-			if(lista.get(x).getIdC()==idC){
-				lista.remove(idC);
+			if(lista.get(x).getCardapio().getId()==idC){
+				lista.remove(x);
 			}
 		}
-		for (int x =0 ; x< lista.size() ; x++) {
-			lista.get(x).setIdC(x);
-		}
-		request.getSession().setAttribute("itemCardapio",lista);
-		request.getRequestDispatcher("cadastrodelivery.jsp").forward(request, response);
+
+		response.sendRedirect("cadastroDelivery");
 	}
 
 

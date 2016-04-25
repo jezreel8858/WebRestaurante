@@ -20,16 +20,7 @@ public class ItemCardapio implements EntityClass{
 	@ManyToOne
 	private Cardapio cardapio;
 	
-	@Transient
-	private int idC;
 	
-	public int getIdC() {
-		return idC;
-	}
-
-	public void setIdC(int idC) {
-		this.idC = idC;
-	}
 
 	public float getSubTotal(){			// Padrao Expert
 		return cardapio.getPreco()*qtd;

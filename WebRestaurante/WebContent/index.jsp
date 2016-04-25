@@ -7,7 +7,6 @@
     <title>Tela Login</title>
     <link rel="stylesheet" type="text/css" href="css/index.css">
     <link rel="stylesheet" href="css/bootstrap4.css">
-    <link rel="stylesheet" href="css/bootstrap.css">
 </head>
 <body>
 	 <div id="login-box">
