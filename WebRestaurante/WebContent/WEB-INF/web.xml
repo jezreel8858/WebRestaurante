@@ -61,6 +61,15 @@
     <servlet-name>cadastroDelivery</servlet-name>
     <url-pattern>/cadastroDelivery</url-pattern>
   </servlet-mapping>
+    <servlet>
+    <description></description>
+    <servlet-name>listarDelivery</servlet-name>
+    <servlet-class>com.br.servlets.ListarDeliveryServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listarDelivery</servlet-name>
+    <url-pattern>/listarDelivery</url-pattern>
+  </servlet-mapping>
   <servlet>
     <servlet-name>AdicionarItemCardapioDelivery</servlet-name>
     <servlet-class>com.br.servlets.AdicionarItemCardapioDeliveryServlet</servlet-class>

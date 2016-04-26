@@ -23,8 +23,8 @@ public class CadastrarDeliveryServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
 		if(lista == null){
 			lista = new ArrayList<>();
-			request.getSession().setAttribute("itens", lista);
 		}
+		request.getSession().setAttribute("itens", lista);
 		request.setAttribute("cardapios", CardapioService.listar());
 		request.getRequestDispatcher("cadastrodelivery.jsp").forward(request, response);
 	}

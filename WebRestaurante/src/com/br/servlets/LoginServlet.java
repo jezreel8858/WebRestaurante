@@ -1,6 +1,7 @@
 package com.br.servlets;
 
 import java.io.IOException;
+import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,6 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.br.model.Cliente;
+import com.br.model.Login;
 import com.br.services.ClienteService;
 
 
@@ -19,30 +21,26 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		boolean isUsuario = false;
-		String login = request.getParameter("login");
+		String usuario = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		
-		
-//		Cliente cliente = ClienteService.procurarPorLoginSenha(login, senha);
-//		Funcionario funcionario = FuncionarioService.procurarPorLoginSenha(login,senha);
-//		Gerente gerente = GerenteService.procurarPorLoginSenha(login,senha);
-		
-		if(senha.length()==6){ // Tipo de Usuario Funcionario
-		 
-		} else if(senha.length()==8){ // Tipo de Usuario Gerente
-			
-		} else if(senha.length()>8){ // Tipo de Usuario Cliente
-			Cliente cliente = ClienteService.procurarPorLoginSenha(login, senha);
-		
-			if(cliente!=null){				
-				isUsuario = true;
-				request.getSession().setAttribute("Usuario", cliente);
-				request.getRequestDispatcher("cadastroDelivery").forward(request, response);
-			} 
+		Login novoLogin = new Login();
+		novoLogin.setLogin(usuario);
+		try {
+			novoLogin.criarSenha(senha);
+		} catch (NoSuchAlgorithmException e) {
+
 		}
-		if(!isUsuario){
-			request.getRequestDispatcher("index.jsp");
-		}
+		
+		
+		Cliente cliente = ClienteService.procurarPorLoginSenha(novoLogin);
+		
+		if(cliente!=null){				
+			request.getSession().setAttribute("Usuario", cliente);
+			response.sendRedirect("cadastroDelivery");
+			return;
+		} 
+		request.setAttribute("mensagem", "Usuario Invalido!");
+		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 }

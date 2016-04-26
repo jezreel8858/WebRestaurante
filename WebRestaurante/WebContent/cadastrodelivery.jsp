@@ -9,7 +9,7 @@
     <section>
         <div class="centrodiv">
             <form action="cadastroDelivery" method="post">
-            	<input type='hidden' name='id'  />
+            	
                 <div class="form-group row">
                     <label for="inputNome"  class="col-sm-1	 form-control-label">Produto</label>
                  	<div class="col-sm-4" >
@@ -49,15 +49,30 @@
 				</c:forEach>
 	            </tbody>
 	        </table>
-                <div class="form-group row">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button style="margin-left: 85%;margin-top: 30px;" type="submit" class="btn btn-secondary">Finalizar</button>
+	        <form action="#">
+                <div class="form-group row" style="margin-top: 30px;">
+                
+                	<div class="col-sm-7" >
+                         
                     </div>
+                    
+                    <div class="col-sm-3">
+                        <input type="number" min=0 step=1  class="form-control" placeholder="100.00" name="pagamento" required="required" >
+                    </div>
+                  	<div class="col-sm-offset-0 col-sm-2" >
+                        <button style="float:right;" type="submit" class="btn btn-secondary">Finalizar</button>
+                    </div>
+                 
+                        
+                    
                 </div>
+              </form>
+                		
+                	
         </div>
     </section>
 
-
+<%@ include file="footer.jsp" %>
 <script src="js/bootstrap.min.js"></script>
 </body>
 </body>

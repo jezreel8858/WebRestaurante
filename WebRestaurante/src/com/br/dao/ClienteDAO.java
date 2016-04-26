@@ -5,6 +5,7 @@ import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
 import com.br.model.Cliente;
+import com.br.model.Login;
 
 public class ClienteDAO extends GenericDAO<Cliente>{
 
@@ -24,11 +25,12 @@ public class ClienteDAO extends GenericDAO<Cliente>{
 		
 		return ((long) result.getSingleResult()) != 0;
 	}
-	public Cliente procurarLoginSenha(String login,String senha){
+	
+	public Cliente procurarLoginSenha(Login login){
 		try{
 		Query query = manager.createQuery("SELECT c FROM Cliente c WHERE c.login.login = :login and c.login.senha = :senha");
-		query.setParameter("login",login);
-		query.setParameter("senha",senha);
+		query.setParameter("login",login.getLogin());
+		query.setParameter("senha",login.getSenha());
 		
 		return  (Cliente) query.getSingleResult();
 		

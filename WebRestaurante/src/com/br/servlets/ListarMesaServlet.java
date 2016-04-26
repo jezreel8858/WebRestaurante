@@ -22,7 +22,23 @@ public class ListarMesaServlet extends HttpServlet{
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<Mesa> mesas = MesaService.listar();
+		List<Mesa> mesas;
+		String descricao = request.getParameter("nome");
+		String opcao = request.getParameter("opcao");
+		
+		if(descricao != null || opcao != null){
+			Mesa filtro = new Mesa();
+			filtro.setDescricao(descricao);
+			if(opcao.equals("0")){
+				filtro.setPerReserva(true);
+			}
+			if(opcao.equals("1")){
+				filtro.setPerReserva(false);
+			}
+			mesas = MesaService.buscarFiltro(filtro);
+		}else{
+			mesas = MesaService.listar();
+		}
 		request.setAttribute("mesas", mesas);
 		request.getRequestDispatcher("listarmesa.jsp").forward(request, response);
 		

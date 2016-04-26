@@ -30,13 +30,16 @@ public class CadastrarMesaServlet extends HttpServlet{
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String id =  request.getParameter("id");
+		
 		String nome =  request.getParameter("numero");
+		String descricao =  request.getParameter("descricao");
 		String preco =  request.getParameter("capacidade");
 		String reserva =  request.getParameter("reserva");
 		
 		Mesa mesa = new Mesa();
 		mesa.setNumero(Integer.parseInt(nome));
 		mesa.setCapacidade(Integer.parseInt(preco));
+		mesa.setDescricao(descricao);
 		
 		mesa.setPerReserva(Integer.parseInt(reserva) == 0 ? true : false);
 		if(id != null && !id.equals("")){
@@ -45,7 +48,7 @@ public class CadastrarMesaServlet extends HttpServlet{
 			request.setAttribute("mensagem", "Atualização efetuada com sucesso");
 		}else{
 			MesaService.criar(mesa);
-			request.setAttribute("mensagem", "Cadastro efetuado com sucesso"+ reserva);
+			request.setAttribute("mensagem", "Cadastro efetuado com sucesso");
 		}
 		
 		request.getRequestDispatcher("listarMesa").forward(request, response);

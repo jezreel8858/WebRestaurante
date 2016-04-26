@@ -10,9 +10,13 @@
             <form action="cadastroMesa" method="post">
             	<input type='hidden' name='id' value="${mesa.id}" />
                 <div class="form-group row">
-                    <label for="inputNome" class="col-sm-2 form-control-label">Numero</label>
-                    <div class="col-sm-10">
-                        <input type="number" class="form-control" id="inputNome" placeholder="000" name="numero" required="required" value="${mesa.numero}">
+                    <label for="inputNumero" class="col-sm-2 form-control-label">Numero</label>
+                    <div class="col-sm-4">
+                        <input type="number" class="form-control" id="inputNumero" placeholder="000" name="numero" required="required" value="${mesa.numero}">
+                    </div>
+                    <label for="inputDescricao" class="col-sm-2 form-control-label">Descricao</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="inputDescricao" placeholder="Mesa" name="descricao" required="required" value="${mesa.descricao}">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -39,7 +43,7 @@
         </div>
     </section>
 
-
+<%@ include file="footer.jsp" %>
 <script src="js/bootstrap.min.js"></script>
 </body>
 </body>

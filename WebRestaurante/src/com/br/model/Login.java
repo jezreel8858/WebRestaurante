@@ -4,6 +4,8 @@ import java.security.NoSuchAlgorithmException;
 
 import javax.persistence.Embeddable;
 
+import com.br.util.HashPassword;
+
 @Embeddable
 public class Login {
 	private String login;
@@ -26,8 +28,7 @@ public class Login {
 	}
 	
 	public void criarSenha(String senha) throws NoSuchAlgorithmException{
-	//	this.senha = HashPassword.convertHash(senha);
-		this.senha = senha;
+		this.senha = HashPassword.convertHash(senha);
 	}
 	
 }

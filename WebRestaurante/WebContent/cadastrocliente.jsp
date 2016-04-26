@@ -10,13 +10,13 @@
                 <div class="form-group">
                   <label for="cLogin" class="col-sm-2 form-control-label">Login:</label>
                 	<div class="col-sm-10">
-                	   <input class="form-control" id="cLogin" type="text" name="tLogin" size="16"  maxlength="20" placeholder="Login" >
+                	   <input class="form-control" id="cLogin" type="text" name="tLogin" size="16"  maxlength="20" placeholder="Login" required>
                	   </div>
                	</div>
                	<div class="form-group">
                 	<label for="cSenha" class="col-sm-2 form-control-label">Senha:</label> 
                 	<div class="col-sm-10">  
-                		<input class="form-control" id="cSenha" type="password" name="tSenha" size="16"  maxlength="8" placeholder="Password" style="margin-left: 10px;"/>
+                		<input class="form-control" id="cSenha" type="password" name="tSenha" size="16"  maxlength="8" placeholder="Password" style="margin-left: 10px;" required/>
                 	</div>	
            	   </div>	
             </fieldset>
@@ -25,7 +25,7 @@
                	<div class="form-group" >
           	     	<label for="cNome" class="col-sm-2 form-control-label">Nome:</label>    
 	           	     	<div class="col-sm-10"> 
-	            	     <p>	<input class="form-control" id="cNome" type="text" name="tNome" size="30" maxlength="30" > </p>
+	            	     <p>	<input class="form-control" id="cNome" type="text" name="tNome" size="30" maxlength="30" required> </p>
 						</div>
 				
 					<label for="cTelefone" class="col-sm-2 form-control-label">Telefone:</label>    
@@ -36,7 +36,7 @@
 				<div class="form-group" >                    
                     <label for="cEmail" class="col-sm-2 form-control-label">Email:</label> 
                     	<div class="col-sm-10"> 
-                    	<p>	<input class="form-control" id="cEmail" type="email" name="tEmail" placeholder="nome@example.com" > </p>
+                    	<p>	<input class="form-control" id="cEmail" type="email" name="tEmail" placeholder="nome@example.com" required> </p>
                	 		</div>
            	 		<label for="cData" class="col-sm-2 form-control-label">Data de Nascimento</label>  
                     	<div class="col-sm-10"> 
@@ -110,6 +110,7 @@
        		<a id="bnt-voltar" class="btn btn-info" role="button" href="index.jsp" >Voltar</a>
         </form>
        </div>
+       <%@ include file="footer.jsp" %>
        <script src="js/bootstrap.min.js"></script>
        
 <body>

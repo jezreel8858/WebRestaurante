@@ -56,7 +56,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
                     <a class="dropdown-item" href="cadastroDelivery">Fazer Pedido</a>
-                    <a class="dropdown-item" href="#">Mostrar Pedidos</a>
+                    <a class="dropdown-item" href="listarDelivery">Mostrar Pedidos</a>
                 </div>
             </li>
         </ul>

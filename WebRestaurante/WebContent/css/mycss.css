@@ -71,3 +71,20 @@ section{
 table{
 	margin-bottom: 0 !important;
 }
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: auto;
+  line-height: 30px; /* Vertically center the text there */
+  background-color: #f5f5f5;
+}
+
+.container {
+  width: auto;
+  max-width: 680px;
+  padding: 0 15px;
+  text-align: center;
+}

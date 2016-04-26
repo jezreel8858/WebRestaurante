@@ -22,9 +22,10 @@ public class ListarDeliveryServlet extends HttpServlet{
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
 		List<Delivery> pedidos = DeliveryService.listar();
-		request.setAttribute("pedidos", pedidos);
-		request.getRequestDispatcher("listarpedidos.jsp").forward(request, response);
+		request.setAttribute("deliverys", pedidos);
+		request.getRequestDispatcher("listardelivery.jsp").forward(request, response);
 		
 	}
 }

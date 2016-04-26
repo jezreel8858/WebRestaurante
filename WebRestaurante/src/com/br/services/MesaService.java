@@ -1,5 +1,6 @@
 package com.br.services;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -101,4 +102,18 @@ public class MesaService {
 		}
 		return result;
 	}
+	
+	public static List<Mesa> buscarFiltro(Mesa filtro){
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		List<Mesa> mesas = new ArrayList<Mesa>();
+		try{
+			MesaDAO mesaDAO = new MesaDAO(manager);
+			mesas = mesaDAO.buscarFiltro(filtro);
+		}
+		finally{
+			manager.close();
+		}
+		return mesas;
+	}
+	
 }

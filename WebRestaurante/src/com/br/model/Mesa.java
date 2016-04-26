@@ -11,8 +11,9 @@ public class Mesa implements EntityClass{
 	@GeneratedValue(strategy=GenerationType.AUTO)
 	private Long id;
 	private int numero;
+	private String descricao;
 	private int capacidade;
-	private boolean perReserva;
+	private Boolean perReserva;
 	
 	public Mesa() {
 		
@@ -40,11 +41,24 @@ public class Mesa implements EntityClass{
 		this.capacidade = capacidade;
 	}
 	
-	public boolean isPerReserva() {
+	public Boolean isPerReserva() {
 		return perReserva;
 	}
-	public void setPerReserva(boolean perReserva) {
+	public void setPerReserva(Boolean perReserva) {
 		this.perReserva = perReserva;
+	}
+	
+
+	public Boolean getPerReserva() {
+		return perReserva;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 	
 	

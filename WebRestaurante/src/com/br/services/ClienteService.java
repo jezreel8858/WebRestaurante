@@ -7,6 +7,7 @@ import javax.persistence.EntityManager;
 
 import com.br.dao.ClienteDAO;
 import com.br.model.Cliente;
+import com.br.model.Login;
 import com.br.util.JPAUtil;
 
 public class ClienteService {
@@ -97,13 +98,13 @@ public class ClienteService {
 		return result;
 	}
 	
-	public  static Cliente procurarPorLoginSenha(String login,String senha) {
+	public  static Cliente procurarPorLoginSenha(Login login) {
 		
 		EntityManager  manager =  JPAUtil.getEntityManager();
 		Cliente result = null;
 		try{
 			ClienteDAO clienteDAO = new ClienteDAO(manager);
-			result = clienteDAO.procurarLoginSenha(login, senha);
+			result = clienteDAO.procurarLoginSenha(login);
 			
 		}catch (Exception e){
 			System.out.println(e.getMessage());
