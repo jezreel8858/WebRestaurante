@@ -4,15 +4,16 @@ import java.io.IOException;
 import java.security.NoSuchAlgorithmException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.br.model.Cliente;
 import com.br.model.Login;
-import com.br.services.ClienteService;
+import com.br.model.Usuario;
+import com.br.services.UsuarioService;
 
-
+//@WebServlet("/LoginSistema")
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -21,6 +22,7 @@ public class LoginServlet extends HttpServlet {
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String usuario = request.getParameter("login");
 		String senha = request.getParameter("senha");
 		
@@ -33,10 +35,10 @@ public class LoginServlet extends HttpServlet {
 		}
 		
 		
-		Cliente cliente = ClienteService.procurarPorLoginSenha(novoLogin);
+		Usuario cliente = UsuarioService.procurarPorLoginSenha(novoLogin);
 		
 		if(cliente!=null){				
-			request.getSession().setAttribute("Usuario", cliente);
+			request.getSession().setAttribute("usuario", cliente);
 			response.sendRedirect("cadastroDelivery");
 			return;
 		} 

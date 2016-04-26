@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -15,12 +16,16 @@ import com.br.model.ItemCardapio;
 import com.br.services.CardapioService;
 import com.br.services.DeliveryService;
 
-
+//@WebServlet("/cadastroDelivery")
 public class CadastrarDeliveryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	List<ItemCardapio> lista;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {		
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("usuario") == null){
+			response.sendRedirect("LoginSistema");
+			return;
+		}
 		if(lista == null){
 			lista = new ArrayList<>();
 		}
@@ -31,6 +36,10 @@ public class CadastrarDeliveryServlet extends HttpServlet {
 
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("usuario") == null){
+			response.sendRedirect("LoginSistema");
+			return;
+		}
 		ItemCardapio itemC = new ItemCardapio();
 		String id = request.getParameter("cardapio");
 		String qtd = request.getParameter("quantidade");

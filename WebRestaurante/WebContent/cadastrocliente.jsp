@@ -1,9 +1,41 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ include file="header.jsp" %>
-<script  type="text/javascript" src="js/mascaras.js" ></script>
-<link rel="stylesheet" type="text/css" href="css/cadastrocliente.css">
-	<div class="centrodiv">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/bootstrap4.css">
+    <link rel="stylesheet" href="css/mycss.css">
+
+	
+    <script type="text/javascript" src="js/jquery-2.2.3.min.js"></script>
+    <script type="text/javascript">
+        $(window).scroll(function(){
+            if ($(window).scrollTop() >= 80)
+            {
+                $("#topofixo").css({position:'fixed',left:'0',top:'0'});
+            }
+            else
+            {
+                $("#topofixo").css({position:'absolute',left:'0',top:'80px'});
+            }
+        });
+    </script>
+	<script  type="text/javascript" src="js/mascaras.js" ></script>
+	<link rel="stylesheet" type="text/css" href="css/cadastrocliente.css">
+</head>
+<body>
+<header>
+    <div id="topo">
+        <span>Restaurante</span>
+    </div >
+    <div id="topofixo" style="height:50px">
+    </div>
+</header>
+
+<section>
+	<div class="centrodiv" >
         <form name="formC" class="form-inline"  id="formulario-cadastro" action="cadastroCliente" method="post" >
             <fieldset id="dados-acesso">
                 <legend style="font: bold 18px/45px sans-serif;">Dados de Acesso</legend>
@@ -107,12 +139,12 @@
             </fieldset>
             		
            	<input name="bntEnviar" id="bnt-enviar"  class="btn btn-info" type="submit" value="Enviar" >
-       		<a id="bnt-voltar" class="btn btn-info" role="button" href="index.jsp" >Voltar</a>
+       		<a id="bnt-voltar" class="btn btn-info" role="button" href="LoginSistema" >Voltar</a>
         </form>
        </div>
-       <%@ include file="footer.jsp" %>
-       <script src="js/bootstrap.min.js"></script>
-       
+</section>
+<%@ include file="footer.jsp" %>
+<script src="js/bootstrap.min.js"></script>     
 <body>
 </body>
 </html>

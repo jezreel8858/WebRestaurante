@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
-<%@ page import="com.br.model.Cardapio"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <%@ include file="header.jsp" %>
     <section>
@@ -19,13 +21,13 @@
                     </div>
                     <label for="inputCategoria" class="col-sm-2 form-control-label">Categoria</label>
                     <div class="col-sm-4">
-                        <select class="form-control" id="inputCategoria">
-                            <option>1</option>
-                            <option>2</option>
-                            <option>3</option>
-                            <option>4</option>
-                            <option>5</option>
-                        </select>
+                       
+                            <select id="inputReserva"  name="opcao" class="form-control" >
+	                         			<c:forEach var="categoria" items="${categorias}">
+	                         				<option  value="${categoria.id }" >categoria.nome</option>
+	                         			</c:forEach>			                        
+	                    	 </select>
+                      
                     </div>
                 </div>
                 <div class="form-group row">

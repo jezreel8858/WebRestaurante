@@ -1,5 +1,6 @@
 package com.br.services;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -124,6 +125,19 @@ public class CardapioService {
 			manager.close();
 		}
 		return result;
+	}
+
+	public static List<Cardapio> buscarFiltro(Cardapio filtro){
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		List<Cardapio> cardapios = new ArrayList<Cardapio>();
+		try{
+			CardapioDAO cardapioDAO = new CardapioDAO(manager);
+			cardapios = cardapioDAO.buscar(filtro);
+		}
+		finally{
+			manager.close();
+		}
+		return cardapios;
 	}
 
 

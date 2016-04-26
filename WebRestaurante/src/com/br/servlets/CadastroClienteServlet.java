@@ -7,6 +7,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,22 +17,28 @@ import com.br.model.Endereco;
 import com.br.services.ClienteService;
 
 
-
+//@WebServlet("/cadastroCliente")
 public class CadastroClienteServlet extends HttpServlet {
 	
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 	
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession(false) == null){
+			response.sendRedirect("LoginSistema");
+			return;
+		}
 		request.getRequestDispatcher("cadastrocliente.jsp").forward(request, response);
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		if(request.getSession().getAttribute("usuario") == null){
+			response.sendRedirect("LoginSistema");
+			return;
+		}
 		
 		String login = request.getParameter("tLogin");
 		String senha = request.getParameter("tSenha");
@@ -76,9 +83,10 @@ public class CadastroClienteServlet extends HttpServlet {
 		endereco.setEstado(estado);
 		endereco.setCidade(cidade);
 		cliente.setEndereco(endereco);
+		cliente.setDesativado(true);
 		
 		ClienteService.criar(cliente);
-		
+		request.getRequestDispatcher("LoginSistema").forward(request, response);
 	}
 
 }

@@ -38,7 +38,7 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
                     <a class="dropdown-item" href="cadastroCardapio">Cadastrar</a>
-                    <a class="dropdown-item" href="#">Listar</a>
+                    <a class="dropdown-item" href="listarCardapio">Listar</a>
                 </div>
             </li>
             <li class="nav-item dropdown">
@@ -59,7 +59,13 @@
                     <a class="dropdown-item" href="listarDelivery">Mostrar Pedidos</a>
                 </div>
             </li>
+            <li class="nav-item pull-xs-right">
+	        	<a class="nav-link" href="logout">Logout</a>
+	        </li>
         </ul>
+       
+	        
+      
     </nav>
 
 </header>
