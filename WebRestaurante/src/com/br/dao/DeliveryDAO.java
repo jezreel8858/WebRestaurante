@@ -30,4 +30,11 @@ public class DeliveryDAO extends GenericDAO<Delivery>{
 		lista =  result.getResultList();
 		return lista;
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Delivery> procurarPorClienteId(Long id) {
+		Query result = null;
+		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.cliente.id = :id").setParameter("id", id);
+		return (List<Delivery>) result.getResultList();
+	}
 }

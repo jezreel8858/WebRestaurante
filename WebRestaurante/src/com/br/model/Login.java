@@ -28,8 +28,9 @@ public class Login {
 	}
 	
 	public void criarSenha(String senha) throws NoSuchAlgorithmException{
-		//this.senha = HashPassword.convertHash(senha);
-		this.setSenha(senha);
+		System.out.println(senha+"SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS");
+		this.senha = HashPassword.convertHash(senha);
+		//this.setSenha(senha);
 	}
 	
 }

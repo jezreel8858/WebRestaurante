@@ -4,7 +4,6 @@ import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.Query;
 
-import com.br.model.Cliente;
 import com.br.model.Login;
 import com.br.model.Usuario;
 

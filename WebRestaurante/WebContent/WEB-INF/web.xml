@@ -70,7 +70,7 @@
     <servlet-name>cadastroDelivery</servlet-name>
     <url-pattern>/cadastroDelivery</url-pattern>
   </servlet-mapping>
-    <servlet>
+  <servlet>
     <description></description>
     <servlet-name>listarDelivery</servlet-name>
     <servlet-class>com.br.servlets.ListarDeliveryServlet</servlet-class>
@@ -110,6 +110,14 @@
   <servlet-mapping>
     <servlet-name>logout</servlet-name>
     <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>listarMeusPedidos</servlet-name>
+    <servlet-class>com.br.servlets.ListarMeusPedidosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>listarMeusPedidos</servlet-name>
+    <url-pattern>/listarMeusPedidos</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>LoginSistema</welcome-file>

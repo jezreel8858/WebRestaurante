@@ -23,6 +23,7 @@ public class CardapioDAO extends GenericDAO<Cardapio>{
 		return query.getSingleResult();
 	}
 
+	@SuppressWarnings("unchecked")
 	public List<Cardapio> buscar(Cardapio filtro){
 		String str = "select c from Cardapio c where upper(nome) like upper(:nome)";
 		if(filtro.getNome() == null){

@@ -49,27 +49,31 @@
 				</c:forEach>
 	            </tbody>
 	        </table>
-	        <form action="cadastroDelivery"	>
+	        
+                		
+                	
+        </div>
+       
+         <form action="cadastroDelivery" style="width: 800px;position: relative;margin:0 auto;padding: 1.5rem;">
                 <div class="form-group row" style="margin-top: 30px;">
                 
-                	<div class="col-sm-7" >
+                	<div class="col-sm-5" >
                          
                     </div>
-                    
+                    <div class="form-group">
+                    <label class="col-sm-2 control-label">Troco para</label>
                     <div class="col-sm-3">
                         <input type="number" min=0 step=0.01  class="form-control" placeholder="R$100.00" name="pagamento" required="required" >
                     </div>
                   	<div class="col-sm-offset-0 col-sm-2" >
                         <button style="float:right;" type="submit" class="btn btn-secondary">Finalizar</button>
                     </div>
-                 
+                 	</div>
                         
                     
                 </div>
               </form>
-                		
-                	
-        </div>
+        
     </section>
 
 <%@ include file="footer.jsp" %>

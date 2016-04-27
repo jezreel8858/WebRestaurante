@@ -68,7 +68,7 @@
 				<div class="form-group" >                    
                     <label for="cEmail" class="col-sm-2 form-control-label">Email:</label> 
                     	<div class="col-sm-10"> 
-                    	<p>	<input class="form-control" id="cEmail" type="email" name="tEmail" placeholder="nome@example.com" required> </p>
+                    	<p>	<input class="form-control" id="cEmail" type="email" name="tEmail" size="30" placeholder="nome@example.com" required> </p>
                	 		</div>
            	 		<label for="cData" class="col-sm-2 form-control-label">Data de Nascimento</label>  
                     	<div class="col-sm-10"> 

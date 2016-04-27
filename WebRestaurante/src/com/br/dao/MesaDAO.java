@@ -18,6 +18,7 @@ public class MesaDAO extends GenericDAO<Mesa>{
 		return Mesa.class;
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Mesa> buscarFiltro(Mesa filtro){
 		String str = "select m from Mesa m where upper(descricao) like upper(:descricao)";
 		if(filtro.getDescricao() == null){

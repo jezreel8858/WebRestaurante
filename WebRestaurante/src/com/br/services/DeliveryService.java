@@ -22,14 +22,16 @@ public class DeliveryService {
 			ItemCardapioDAO ItemCardapioDAO = new ItemCardapioDAO(manager);
 			if(delivery.getCliente() == null ){
 				throw new Exception("Delivery sem cliente");
-			}
+			}			
+			deliveryDAO.insert(delivery);	// Primeiro tinha que inserir o delivery para o itemCardapio setar o id do pedido
+			
 			for(ItemCardapio itemCardapio:delivery.getItemCardapios()){
 				if(itemCardapio.getCardapio() == null ){
 					throw new Exception("Item sem cardápio");
 				}
+				itemCardapio.setPedido(delivery);
 				ItemCardapioDAO.insert(itemCardapio);
 			}
-			deliveryDAO.insert(delivery);
 			manager.getTransaction().begin();
 			manager.getTransaction().commit();
 			
@@ -101,6 +103,23 @@ public class DeliveryService {
 		try{
 			DeliveryDAO deliveryDAO = new DeliveryDAO(manager);	
 			result = deliveryDAO.findById(delivery.getId());
+			
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		finally{
+			manager.close();
+		}
+		return result;
+	}
+	
+public  static List<Delivery> procurarPorClienteId(Long id) {
+		
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		List<Delivery> result = null;
+		try{
+			DeliveryDAO deliveryDAO = new DeliveryDAO(manager);	
+			result = deliveryDAO.procurarPorClienteId(id);
 			
 		}catch (Exception e){
 			System.out.println(e.getMessage());

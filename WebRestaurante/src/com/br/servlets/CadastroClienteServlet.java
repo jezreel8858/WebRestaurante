@@ -7,13 +7,13 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.br.model.Cliente;
 import com.br.model.Endereco;
+import com.br.model.Login;
 import com.br.services.ClienteService;
 
 
@@ -57,6 +57,7 @@ public class CadastroClienteServlet extends HttpServlet {
 		Cliente cliente =  new Cliente();
 		cliente.setNome(nome);
 		cliente.setTelefone(telefone);
+		cliente.setLogin(new Login()); //tava dando erro aqui no hashe
 		
 		try {
 			cliente.createLogin(login, senha);
@@ -80,7 +81,7 @@ public class CadastroClienteServlet extends HttpServlet {
 		cliente.setDesativado(true);
 		
 		ClienteService.criar(cliente);
-		request.getRequestDispatcher("LoginSistema").forward(request, response);
+		response.sendRedirect("LoginSistema");
 	}
 
 }

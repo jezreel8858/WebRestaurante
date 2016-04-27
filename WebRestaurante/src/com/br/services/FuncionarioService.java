@@ -7,7 +7,6 @@ import javax.persistence.EntityManager;
 
 import com.br.dao.FuncionarioDAO;
 import com.br.model.Funcionario;
-import com.br.model.Login;
 import com.br.util.JPAUtil;
 
 public class FuncionarioService {

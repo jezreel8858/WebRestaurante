@@ -63,7 +63,7 @@ public class CadastrarDeliveryServlet extends HttpServlet {
 			DeliveryService.criar(delivery);
 			
 			
-			request.getRequestDispatcher("listarDelivery").forward(request, response);
+			request.getRequestDispatcher("listarMeusPedidos").forward(request, response);
 		} else {
 			request.getSession().setAttribute("itens", lista);
 			request.setAttribute("cardapios", CardapioService.listar());
