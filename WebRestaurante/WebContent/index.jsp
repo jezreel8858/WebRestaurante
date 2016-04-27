@@ -33,17 +33,9 @@
 				  <div>
 				  
 				  </div>
-				  <div class="form-group">
-				    <div class="col-sm-offset-2 col-sm-12">
-				      <div class="checkbox">
-				        <label>
-				          <input type="checkbox" style="margin-top: 15px;"> Lembra de mim
-				        </label>
-				      </div>
-				    </div>
-				  </div>
-				  <div class="form-group">
-				    <div class="col-sm-offset-2 col-sm-10">
+				 
+				  <div class="form-group" >
+				    <div class="col-sm-offset-2 col-sm-10" style="margin-top: 30px;">
 				    	<a class="btn btn-info" href="cadastroCliente" role="button" >Cadastra-se</a>
 				      	<button type="submit" class="btn btn-info" style="margin-left: 126px;">Acessar</button>
 				      

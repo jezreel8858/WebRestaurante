@@ -49,7 +49,7 @@
 				</c:forEach>
 	            </tbody>
 	        </table>
-	        <form action="#">
+	        <form action="cadastroDelivery"	>
                 <div class="form-group row" style="margin-top: 30px;">
                 
                 	<div class="col-sm-7" >
@@ -57,7 +57,7 @@
                     </div>
                     
                     <div class="col-sm-3">
-                        <input type="number" min=0 step=1  class="form-control" placeholder="100.00" name="pagamento" required="required" >
+                        <input type="number" min=0 step=0.01  class="form-control" placeholder="R$100.00" name="pagamento" required="required" >
                     </div>
                   	<div class="col-sm-offset-0 col-sm-2" >
                         <button style="float:right;" type="submit" class="btn btn-secondary">Finalizar</button>

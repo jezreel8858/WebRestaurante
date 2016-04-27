@@ -26,19 +26,13 @@ public class CadastroClienteServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getSession(false) == null){
-			response.sendRedirect("LoginSistema");
-			return;
-		}
+		
 		request.getRequestDispatcher("cadastrocliente.jsp").forward(request, response);
 	
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		if(request.getSession().getAttribute("usuario") == null){
-			response.sendRedirect("LoginSistema");
-			return;
-		}
+		
 		
 		String login = request.getParameter("tLogin");
 		String senha = request.getParameter("tSenha");
