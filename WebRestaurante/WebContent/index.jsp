@@ -21,13 +21,13 @@
 				  <div class="form-group">
 				    <label class="col-sm-2 control-label">Login</label>
 				    <div class="col-sm-9">
-				      <input type="text" class="form-control" name="login" placeholder="Login" required="required" >
+				      <input type="text" class="form-control" name="tLogin" placeholder="Login" required="required" >
 				    </div>
 				  </div>
 				  <div class="form-group" >
 				    <label  class="col-sm-2 control-label" style="margin-top: 15px;">Senha</label>
 				    <div class="col-sm-9">
-				      <input style="margin-top: 15px;" type="password" class="form-control" name="senha" placeholder="Senha" required="required">
+				      <input style="margin-top: 15px;" type="password" class="form-control" name="tSenha" placeholder="Senha" required="required">
 				    </div>
 				  </div>
 				  <div>

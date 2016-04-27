@@ -12,36 +12,40 @@ import com.br.model.Login;
 import com.br.model.Usuario;
 import com.br.services.UsuarioService;
 
-//@WebServlet("/LoginSistema")
+
 public class LoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		destroy();
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		String usuario = request.getParameter("login");
-		String senha = request.getParameter("senha");
+		String usuario = request.getParameter("tLogin");  // era tLogin mestre e tSenha por isso ele nao logava direto
+		String senha = request.getParameter("tSenha");
 		
-		Login novoLogin = new Login();
-		novoLogin.setLogin(usuario);
+		Login login = new Login();
+		login.setLogin(usuario);
 		try {
-			novoLogin.criarSenha(senha);
+			login.criarSenha(senha);
 		} catch (NoSuchAlgorithmException e) {
 
 		}
 		
 		
-		Usuario cliente = UsuarioService.procurarPorLoginSenha(novoLogin);
+		Usuario cliente = UsuarioService.procurarPorLoginSenha(login);
 		
 		if(cliente!=null){				
 			request.getSession().setAttribute("usuario", cliente);
 			response.sendRedirect("cadastroDelivery");
 			return;
 		} 
+		
 		request.setAttribute("mensagem", "Usuario Invalido!");
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
+	
+
 }
