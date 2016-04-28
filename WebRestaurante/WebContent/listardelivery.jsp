@@ -45,20 +45,24 @@
 	            <tr>
 	                <th scope="row">${delivery.id}</th>
 	                <td><fmt:formatDate type="date" value="${delivery.data}" /></td>
-					<td>${delivery.total}</td>
+					<td>R$: ${delivery.total}</td>
 					<td>${delivery.status}</td>
 					<td><a href="DetalharDeliveryCliente?id=${delivery.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${delivery.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
 	
 	            </tr>
 	            </c:forEach>
 	            </tbody>
-	        </table>
-	        
+	        </table>       
 	        
 		</div>
-	     
-	     	
-	     </div>
+     </div>
+     		<form	 style="width: 800px;position: relative;margin:0 auto;padding: 1.5rem;">
+                <div class="form-group row" style="margin-top: 30px;">
+                  	<div class="col-sm-offset-6 col-sm-5" >
+                        <a href="javascript:history.back();" style="float:right;" class="btn btn-secondary">Voltar</a>
+                    </div>   
+                </div>
+            </form>
 	     	<c:if test="${mensagem != null}">	
 				<div class="alert alert-success" role="alert" style="margin:auto; width: 50%;">
   					${mensagem}.

@@ -65,11 +65,14 @@
 	            </tbody>
 	        </table>
 	        
-	        
-
-	     
-	     	
 	     </div>
+	     <form	 style="width: 800px;position: relative;margin:0 auto;padding: 1.5rem;">
+                <div class="form-group row" style="margin-top: 30px;">
+                  	<div class="col-sm-offset-6 col-sm-5" >
+                        <a href="javascript:history.back();" style="float:right;" class="btn btn-secondary">Voltar</a>
+                    </div>   
+                </div>
+            </form>
 	     	<c:if test="${mensagem != null}">	
 				<div class="alert alert-success" role="alert" style="margin:auto; width: 50%;">
   					${mensagem}.
