@@ -8,8 +8,7 @@
 	
     <section>
         <div class="centrodiv">
-            <form action="cadastroDelivery" method="post">
-            	
+            <form action="cadastroDelivery" method="post">            	
                 <div class="form-group row">
                     <label for="inputNome"  class="col-sm-1	 form-control-label">Produto</label>
                  	<div class="col-sm-4" >
@@ -48,32 +47,33 @@
 		            </tr>
 				</c:forEach>
 	            </tbody>
-	        </table>
-	        
-                		
-                	
+	        </table>               	
         </div>
        
          <form action="cadastroDelivery" style="width: 800px;position: relative;margin:0 auto;padding: 1.5rem;">
-                <div class="form-group row" style="margin-top: 30px;">
+                 <div class="form-group row" style="margin-top: 30px;">
                 
-                	<div class="col-sm-5" >
+                	<div class="col-sm-3" >
                          
                     </div>
                     <div class="form-group">
-                    <label class="col-sm-2 control-label">Troco para</label>
-                    <div class="col-sm-3">
-                        <input type="number" min=0 step=0.01  class="form-control" placeholder="R$100.00" name="pagamento" required="required" >
-                    </div>
-                  	<div class="col-sm-offset-0 col-sm-2" >
-                        <button style="float:right;" type="submit" class="btn btn-secondary">Finalizar</button>
-                    </div>
+	                    <label class="col-sm-2 control-label">Troco para</label>
+	                    <div class="col-sm-3">
+	                        <input type="number" min=0 step=0.01  class="form-control" placeholder="R$100.00" name="pagamento" required="required" >
+	                    </div>
+	                  	<div class="col-sm-offset-2 col-sm-2" >
+	                        <button style="float:right;" type="submit" class="btn btn-secondary">Confirmar Pedido</button>
+	                    </div>
                  	</div>
                         
                     
                 </div>
               </form>
-        
+        		<c:if test="${mensagem != null}">	
+				<div class="alert alert-success" role="alert" style="margin:auto; width: 50%;">
+  					${mensagem}.
+				</div>
+			</c:if>	
     </section>
 
 <%@ include file="footer.jsp" %>

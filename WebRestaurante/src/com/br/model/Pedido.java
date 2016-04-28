@@ -29,6 +29,8 @@ public class Pedido implements EntityClass{
 	
 	private String status;
 	
+	private boolean desativado;
+	
 	@ManyToOne
 	@JoinColumn(name="fun_id")
 	private Funcionario funcionario;
@@ -68,12 +70,6 @@ public class Pedido implements EntityClass{
 	}
 	public void setData(Date data) {
 		this.data = data;
-	}
-	public List<ItemCardapio> getItemCardapios() {
-		return itensCardapio;
-	}
-	public void setItemCardapios(List<ItemCardapio> itemCardapios) {
-		this.itensCardapio = itemCardapios;
 	}	
 	public Funcionario getFuncionario() {
 		return funcionario;
@@ -87,6 +83,19 @@ public class Pedido implements EntityClass{
 		return "Pedido [id=" + id + ", data=" + data + ", status=" + status + ", funcionario=" + funcionario
 				+ ", "+ itensCardapio + "]";
 	}
+	public boolean isDesativado() {
+		return desativado;
+	}
+	public void setDesativado(boolean desativado) {
+		this.desativado = desativado;
+	}
+	public List<ItemCardapio> getItensCardapio() {
+		return itensCardapio;
+	}
+	public void setItensCardapio(List<ItemCardapio> itensCardapio) {
+		this.itensCardapio = itensCardapio;
+	}
+
 
 }
 

@@ -29,6 +29,13 @@ public class TradicionalDAO extends GenericDAO<Tradicional> {
 		result.setParameter("dataF", dataF);
 		lista =  result.getResultList();
 		return lista;
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Tradicional> procurarPorStatus(String status) {
+		Query result = null;
+		result = manager.createQuery("SELECT t FROM Tradicional t WHERE t.status = :status").setParameter("status", status);
+		return (List<Tradicional>) result.getResultList();
 	};
 	
 }

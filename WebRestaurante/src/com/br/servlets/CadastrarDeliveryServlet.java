@@ -30,9 +30,10 @@ public class CadastrarDeliveryServlet extends HttpServlet {
 			response.sendRedirect("LoginSistema");
 			return;
 		}
-		if(lista == null){
+		if(lista == null || request.getSession().getAttribute("itens") == null){			
 			lista = new ArrayList<>();
 		}
+		
 		request.getSession().setAttribute("itens", lista);
 		request.setAttribute("cardapios", CardapioService.listar());
 		
@@ -48,7 +49,7 @@ public class CadastrarDeliveryServlet extends HttpServlet {
 				try {
 					dataPedido = (Date) format.parse(format.format(new Date()));
 				} catch (java.text.ParseException e) {
-					// TODO Auto-generated catch block
+					
 					e.printStackTrace();
 				}
 			} catch (ParseException e1) {
@@ -56,14 +57,11 @@ public class CadastrarDeliveryServlet extends HttpServlet {
 			}
 			delivery.setData(dataPedido);
 			delivery.setCliente(cliente);
-			delivery.setItemCardapios(lista);			
-			
-			
+			delivery.setItensCardapio(lista);				
 			delivery.setStatus("Pendente");
-			DeliveryService.criar(delivery);
-			
-			
-			request.getRequestDispatcher("listarMeusPedidos").forward(request, response);
+			DeliveryService.criar(delivery);			
+			request.setAttribute("mensagem", "Pedido efetuado com Sucesso!");
+			request.getRequestDispatcher("listarDelivery").forward(request, response);
 		} else {
 			request.getSession().setAttribute("itens", lista);
 			request.setAttribute("cardapios", CardapioService.listar());

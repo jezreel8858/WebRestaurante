@@ -1,6 +1,7 @@
 package com.br.servlets;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -8,7 +9,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.br.model.Cardapio;
+import com.br.model.Categoria;
 import com.br.services.CardapioService;
+import com.br.services.CategoriaService;
 
 //@WebServlet("/cadastroCardapio")
 public class CadastrarCardapioServlet extends HttpServlet{
@@ -25,14 +28,13 @@ public class CadastrarCardapioServlet extends HttpServlet{
 			Cardapio cardapio = CardapioService.procurar(new Cardapio(new Long(id)));
 			request.setAttribute("cardapio", cardapio);
 		}
-		
+		List<Categoria> categorias = CategoriaService.listar();
+		request.setAttribute("categorias", categorias);
 		request.getRequestDispatcher("cadastrocardapio.jsp").forward(request, response);
 		
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getSession().getAttribute("usuario") == null){
 			response.sendRedirect("LoginSistema");

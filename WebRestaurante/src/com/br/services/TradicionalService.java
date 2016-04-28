@@ -21,7 +21,7 @@ public class TradicionalService {
 			TradicionalDAO pedidoDAO = new TradicionalDAO(manager);
 			ItemCardapioDAO ItemCardapioDAO = new ItemCardapioDAO(manager);
 			
-			for(ItemCardapio itemCardapio:pedido.getItemCardapios()){
+			for(ItemCardapio itemCardapio:pedido.getItensCardapio()){
 				if(itemCardapio.getCardapio() == null ){
 					throw new Exception("Item sem cardápio");
 				}
@@ -51,7 +51,7 @@ public class TradicionalService {
 			TradicionalDAO pedidoDAO = new TradicionalDAO(manager);
 			ItemCardapioDAO ItemCardapioDAO = new ItemCardapioDAO(manager);
 			
-			for(ItemCardapio itemCardapio:pedido.getItemCardapios()){
+			for(ItemCardapio itemCardapio:pedido.getItensCardapio()){
 				if(itemCardapio.getCardapio() == null ){
 					throw new Exception("Item sem cardápio");
 				}
@@ -138,6 +138,22 @@ public class TradicionalService {
 			manager.close();
 		}
 		return lista;
+	}
+
+	public static List<Tradicional> procurarPorStatus(String status) {
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		List<Tradicional> result = null;
+		try{
+			TradicionalDAO pedidoDAO = new TradicionalDAO(manager);	
+			result = pedidoDAO.procurarPorStatus(status);
+			
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		finally{
+			manager.close();
+		}
+		return result;
 	}
 
 }

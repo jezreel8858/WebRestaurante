@@ -25,7 +25,7 @@ public class DeliveryService {
 			}			
 			deliveryDAO.insert(delivery);	// Primeiro tinha que inserir o delivery para o itemCardapio setar o id do pedido
 			
-			for(ItemCardapio itemCardapio:delivery.getItemCardapios()){
+			for(ItemCardapio itemCardapio:delivery.getItensCardapio()){
 				if(itemCardapio.getCardapio() == null ){
 					throw new Exception("Item sem cardápio");
 				}
@@ -52,7 +52,7 @@ public class DeliveryService {
 			DeliveryDAO deliveryDAO = new DeliveryDAO(manager);
 			ItemCardapioDAO ItemCardapioDAO = new ItemCardapioDAO(manager);
 			
-			for(ItemCardapio itemCardapio:delivery.getItemCardapios()){
+			for(ItemCardapio itemCardapio:delivery.getItensCardapio()){
 				if(itemCardapio.getCardapio() == null ){
 					throw new Exception("Item sem cardápio");
 				}
@@ -79,11 +79,30 @@ public class DeliveryService {
 			DeliveryDAO deliveryDAO = new DeliveryDAO(manager);
 			ItemCardapioDAO ItemCardapioDAO = new ItemCardapioDAO(manager);
 			
-			for(ItemCardapio ItemCardapio:delivery.getItemCardapios()){
+			for(ItemCardapio ItemCardapio:delivery.getItensCardapio()){
 				ItemCardapioDAO.delete(ItemCardapio);
 			}
 			
 			deliveryDAO.delete(delivery);
+			manager.getTransaction().begin();
+			manager.getTransaction().commit();
+			
+		}catch (Exception e){
+			if(manager.getTransaction().isActive())
+				manager.getTransaction().rollback();
+		}
+		finally{
+			manager.close();
+		}
+	}
+	
+	public  static void desativar(Long id) {
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		
+		try{
+			DeliveryDAO deliveryDAO = new DeliveryDAO(manager);
+			
+			deliveryDAO.desativar(id);
 			manager.getTransaction().begin();
 			manager.getTransaction().commit();
 			
@@ -120,6 +139,39 @@ public  static List<Delivery> procurarPorClienteId(Long id) {
 		try{
 			DeliveryDAO deliveryDAO = new DeliveryDAO(manager);	
 			result = deliveryDAO.procurarPorClienteId(id);
+			
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		finally{
+			manager.close();
+		}
+		return result;
+	}
+
+	public  static List<Delivery> procurarPorStatus(Long id,String status) {
+	
+	EntityManager  manager =  JPAUtil.getEntityManager();
+	List<Delivery> result = null;
+	try{
+		DeliveryDAO deliveryDAO = new DeliveryDAO(manager);	
+		result = deliveryDAO.procurarPorStatus(id,status);
+		
+	}catch (Exception e){
+		System.out.println(e.getMessage());
+	}
+	finally{
+		manager.close();
+	}
+	return result;
+}
+	public  static List<Delivery> procurarPorStatus(String status) {
+		
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		List<Delivery> result = null;
+		try{
+			DeliveryDAO deliveryDAO = new DeliveryDAO(manager);	
+			result = deliveryDAO.procurarPorStatus(status);
 			
 		}catch (Exception e){
 			System.out.println(e.getMessage());

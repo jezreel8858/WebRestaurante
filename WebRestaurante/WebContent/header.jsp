@@ -56,13 +56,15 @@
                 </a>
                 <div class="dropdown-menu" aria-labelledby="Preview">
                     <a class="dropdown-item" href="cadastroDelivery">Fazer Pedido</a>
-                    <a class="dropdown-item" href="listarMeusPedidos">Meus Pedidos</a>
+                    <a class="dropdown-item" href="listarDelivery">Meus Pedidos</a>
                 </div>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="cadastroCliente">Meu Cadastro</a>
             </li>
-             
+             <li class="nav-item">
+                <a class="nav-link" href="ListarPedidos">Pedidos</a>
+            </li>
             <li class="nav-item pull-xs-right">
 	        	<a class="nav-link" href="logout">Logout</a>
 	        </li>

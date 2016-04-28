@@ -70,6 +70,15 @@ section{
     border-width: .2rem;
     border: solid #f7f7f9;
 }
+.centrodiv1
+{
+    width: 1200px;
+    position: relative;
+    margin:0 auto;
+    padding: 1.5rem;
+    border-width: .2rem;
+    border: solid #f7f7f9;
+}
 .icon-tb{
 	padding: 0.4px;
 	margin-right: 4px;

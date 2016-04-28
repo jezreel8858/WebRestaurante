@@ -18,7 +18,7 @@
 	                   	<div class="col-sm-3" >
 	                         <select id="inputCategoria"  name="opcao" class="form-control" >
 	                         			<c:forEach var="categoria" items="${categorias}">
-	                         				<option  value="${categoria.id }" >categoria.nome</option>
+	                         				<option  value="${categoria.id }" >${categoria.nome}</option>
 	                         			</c:forEach>			                        
 	                    	 </select>
 	                    </div>
@@ -47,8 +47,8 @@
 	                <td>${cardapio.preco}</td>
 					<td>${cardapio.categoria.nome}</td>
 					<td>
-						<a href="cadastroCardapio?id=${mesa.id}"><img src="image/edit.png" class="icon-tb"></a> 
-						<a href="removerCardapio?id=${mesa.id}"><img src="image/delete.png" class="icon-tb"></a>
+						<a href="cadastroCardapio?id=${cardapio.id}"><img src="image/edit.png" class="icon-tb"></a> 
+						<a href="removerCardapio?id=${cardapio.id}"><img src="image/delete.png" class="icon-tb"></a>
 					</td>
 	
 	            </tr>

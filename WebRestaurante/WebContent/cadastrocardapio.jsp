@@ -24,7 +24,7 @@
                        
                             <select id="inputReserva"  name="opcao" class="form-control" >
 	                         			<c:forEach var="categoria" items="${categorias}">
-	                         				<option  value="${categoria.id }" >categoria.nome</option>
+	                         				<option  value="${categoria.id}" >${categoria.nome}</option>
 	                         			</c:forEach>			                        
 	                    	 </select>
                       

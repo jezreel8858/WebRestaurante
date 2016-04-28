@@ -6,16 +6,24 @@
     
 <%@ include file="header.jsp" %>
 	<section>
-		<div class="centrodiv">
-			<form action="listarDelivery">
+		<div class="centrodiv1">
+			<form action="ListarPedidos">
 				<div class="form-group row">
 				
-						<label for="inputNumero" class="col-sm-3 form-control-label">Numero do Pedido</label>
-	                    <div class="col-sm-2">
+						<label for="inputNumero" class="col-sm-2 form-control-label">Numero do Pedido</label>
+	                    <div class="col-sm-1">
 	                        <input type="number" class="form-control" id="inputNumero" placeholder="000" name="numero">
 	                    </div>
+	                    <label for="inputStatus" class="col-sm-1 form-control-label">Tipo</label>
+	                   	<div class="col-sm-2" >
+	                         <select id="inputStatus"  name="tipo" class="form-control" >
+	                         			<option  value="Todos" selected="selected" >Todos</option>
+			                        	<option  value="Delivery" >Delivery</option>
+			                        	<option  value="Tradicional" >Tradicional</option>
+	                    	 </select>
+	                    </div>
 	                    <label for="inputStatus" class="col-sm-1 form-control-label">Status</label>
-	                   	<div class="col-sm-3" >
+	                   	<div class="col-sm-2" >
 	                         <select id="inputStatus"  name="status" class="form-control" >
 	                         			<option  value="Todos" selected="selected" >Todos</option>
 			                        	<option  value="Pendente" >Pendente</option>
@@ -36,6 +44,9 @@
 	                <th>Data</th>
 	                <th>Total</th>
 	                <th>Status</th>
+	                <th>Cliente</th>
+	                <th>Atendido Por</th>
+	                <th>Tipo</th>
 	                <th>Ações</th>
 	            </tr>
 	            </thead>
@@ -47,7 +58,23 @@
 	                <td><fmt:formatDate type="date" value="${delivery.data}" /></td>
 					<td>${delivery.total}</td>
 					<td>${delivery.status}</td>
+					<td>${delivery.cliente.nome}</td>
+					<td></td>
+					<td>Delivery</td>
 					<td><a href="DetalharDeliveryCliente?id=${delivery.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${delivery.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
+	
+	            </tr>
+	            </c:forEach>
+	            <c:forEach var="tradicional" items="${tradicionais}">
+	            <tr>
+	                <th scope="row">${tradicional.id}</th>
+	                <td><fmt:formatDate type="date" value="${tradicional.data}" /></td>
+					<td>${tradicional.total}</td>
+					<td>${tradicional.status}</td>
+					<td></td>
+					<td>${tradicional.funcionario.nome}</td>
+					<td>Tradicional</td>
+					<td><a href="DetalharDeliveryCliente?id=${tradicional.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${tradicional.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
 	
 	            </tr>
 	            </c:forEach>

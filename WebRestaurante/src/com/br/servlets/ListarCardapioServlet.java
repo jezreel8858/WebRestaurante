@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.br.model.Cardapio;
 import com.br.model.Categoria;
 import com.br.services.CardapioService;
+import com.br.services.CategoriaService;
 
 
 @WebServlet("/listarCardapio")
@@ -45,9 +46,10 @@ public class ListarCardapioServlet extends HttpServlet {
 			
 		}
 		filtro.setCategoria(filtroCa);
-		
+		List<Categoria> categorias = CategoriaService.listar();
 		List<Cardapio> cardapios = CardapioService.buscarFiltro(filtro);
 		request.setAttribute("cardapios", cardapios);
+		request.getSession().setAttribute("categorias", categorias);
 		request.getRequestDispatcher("listarcardapio.jsp").forward(request, response);
 	}
 

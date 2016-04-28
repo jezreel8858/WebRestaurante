@@ -112,12 +112,28 @@
     <url-pattern>/logout</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>listarMeusPedidos</servlet-name>
-    <servlet-class>com.br.servlets.ListarMeusPedidosServlet</servlet-class>
+    <servlet-name>RemoverDelivery</servlet-name>
+    <servlet-class>com.br.servlets.RemoverDeliveryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>listarMeusPedidos</servlet-name>
-    <url-pattern>/listarMeusPedidos</url-pattern>
+    <servlet-name>RemoverDelivery</servlet-name>
+    <url-pattern>/RemoverDelivery</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>DetalharDeliveryCliente</servlet-name>
+    <servlet-class>com.br.servlets.DetalharDeliveryClienteServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>DetalharDeliveryCliente</servlet-name>
+    <url-pattern>/DetalharDeliveryCliente</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <servlet-name>ListarPedidos</servlet-name>
+    <servlet-class>com.br.servlets.ListarPedidosServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ListarPedidos</servlet-name>
+    <url-pattern>/ListarPedidos</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>LoginSistema</welcome-file>

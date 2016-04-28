@@ -34,7 +34,28 @@ public class DeliveryDAO extends GenericDAO<Delivery>{
 	@SuppressWarnings("unchecked")
 	public List<Delivery> procurarPorClienteId(Long id) {
 		Query result = null;
-		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.cliente.id = :id").setParameter("id", id);
+		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.cliente.id = :id and d.desativado = :desativado").setParameter("id", id).setParameter("desativado", false);
 		return (List<Delivery>) result.getResultList();
+	}
+
+	@SuppressWarnings("unchecked")
+	public List<Delivery> procurarPorStatus(Long id, String status) {
+		Query result = null;
+		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.cliente.id = :id and d.status = :status and d.desativado = :desativado").setParameter("id", id).setParameter("status", status);
+		return (List<Delivery>) result.getResultList();
+	}
+	@SuppressWarnings("unchecked")
+	public List<Delivery> procurarPorStatus(String status) {
+		Query result = null;
+		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.status = :status").setParameter("status", status);
+		return (List<Delivery>) result.getResultList();
+	}
+
+	public void desativar(Long id) {
+		Query result = manager.createQuery("SELECT d FROM Delivery d WHERE d.id = :id ").setParameter("id", id);
+		Delivery delivery = (Delivery) result.getSingleResult();
+		delivery.setDesativado(true);
+		update(delivery);
+		
 	}
 }
