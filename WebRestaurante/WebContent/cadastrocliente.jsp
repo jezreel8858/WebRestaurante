@@ -1,7 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
 <!DOCTYPE html>
-<html lang="en">
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<html lang="pt-br">
+<c:if test="${home == 'cliente'}">
+<%@ include file="navcliente.jsp" %>
+</c:if>
+<c:if test="${home == 'funcionario'}">
+<%@ include file="navfuncionario.jsp" %>
+</c:if>
+<c:if test="${home == 'gerente'}">
+<%@ include file="navgerente.jsp" %>
+</c:if>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -26,6 +38,7 @@
 	<link rel="stylesheet" type="text/css" href="css/cadastrocliente.css">
 </head>
 <body>
+<c:if test="${usuario == null}">
 <header>
     <div id="topo">
         <span>Restaurante</span>
@@ -33,7 +46,7 @@
     <div id="topofixo" style="height:50px">
     </div>
 </header>
-
+</c:if>
 <section>
 	<div class="centrodiv" >
         <form name="formC" class="form-inline"  id="formulario-cadastro" action="cadastroCliente" method="post" >

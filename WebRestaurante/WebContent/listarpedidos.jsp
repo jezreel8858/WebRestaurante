@@ -4,7 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
-<%@ include file="header.jsp" %>
+<c:if test="${home == 'cliente'}">
+<%@ include file="navcliente.jsp" %>
+</c:if>
+<c:if test="${home == 'funcionario'}">
+<%@ include file="navfuncionario.jsp" %>
+</c:if>
+<c:if test="${home == 'gerente'}">
+<%@ include file="navgerente.jsp" %>
+</c:if>
+
 	<section>
 		<div class="centrodiv1">
 			<form action="ListarPedidos">
@@ -61,7 +70,7 @@
 					<td>${delivery.cliente.nome}</td>
 					<td></td>
 					<td>Delivery</td>
-					<td><a href="DetalharDeliveryCliente?id=${delivery.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${delivery.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
+					<td><a href="DetalharDeliveryCliente?id=${delivery.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
 	
 	            </tr>
 	            </c:forEach>
@@ -74,7 +83,7 @@
 					<td></td>
 					<td>${tradicional.funcionario.nome}</td>
 					<td>Tradicional</td>
-					<td><a href="DetalharDeliveryCliente?id=${tradicional.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${tradicional.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
+					<td><a href="#" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
 	
 	            </tr>
 	            </c:forEach>

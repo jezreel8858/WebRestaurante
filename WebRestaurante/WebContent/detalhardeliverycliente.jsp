@@ -4,8 +4,16 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<%@ include file="header.jsp" %>
-	
+<c:if test="${home == 'cliente'}">
+<%@ include file="navcliente.jsp" %>
+</c:if>
+<c:if test="${home == 'funcionario'}">
+<%@ include file="navfuncionario.jsp" %>
+</c:if>
+<c:if test="${home == 'gerente'}">
+<%@ include file="navgerente.jsp" %>
+</c:if>
+
     <section>
         <div class="centrodiv">
             <table class="table table-sm">
@@ -20,7 +28,7 @@
 		            <tr>
 		            	<td><c:out value="${item.cardapio.nome}" /></td>
 		            	<td><c:out value="${item.qtd}"/></td>
-		            	<td><c:out value="${item.qtd*item.cardapio.preco}"/></td>		                             
+		            	<td><c:out value="R$: ${item.qtd*item.cardapio.preco}"/></td>		                             
 		            </tr>
 	            </tbody>
 	        </table>               	

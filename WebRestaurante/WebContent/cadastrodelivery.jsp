@@ -4,7 +4,15 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<%@ include file="header.jsp" %>
+<c:if test="${home == 'cliente'}">
+<%@ include file="navcliente.jsp" %>
+</c:if>
+<c:if test="${home == 'funcionario'}">
+<%@ include file="navfuncionario.jsp" %>
+</c:if>
+<c:if test="${home == 'gerente'}">
+<%@ include file="navgerente.jsp" %>
+</c:if>
 	
     <section>
         <div class="centrodiv">
