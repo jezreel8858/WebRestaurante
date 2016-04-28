@@ -2,6 +2,8 @@ package com.br.model;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.PrimaryKeyJoinColumn;
 
 @Entity(name="Funcionario")
@@ -13,7 +15,9 @@ public class Funcionario extends Usuario implements Comparable<Usuario>{
 	@Column(nullable=false,length=11)
 	private String cpf;
 	
-
+	@ManyToOne
+	@JoinColumn(name="cargo_id")
+	private Cargo cargo;
 		
 	public float getSalario() {
 		return salario;
@@ -30,6 +34,12 @@ public class Funcionario extends Usuario implements Comparable<Usuario>{
 	@Override
 	public int compareTo(Usuario o) {
 		return getNome().compareTo(o.getNome());
+	}
+	public Cargo getCargo() {
+		return cargo;
+	}
+	public void setCargo(Cargo cargo) {
+		this.cargo = cargo;
 	}
 	
 }

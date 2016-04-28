@@ -81,6 +81,7 @@ public class CadastroClienteServlet extends HttpServlet {
 		cliente.setDesativado(true);
 		
 		ClienteService.criar(cliente);
+		System.out.println(ClienteService.listar());
 		request.getRequestDispatcher("LoginSistema").forward(request, response);
 	}
 

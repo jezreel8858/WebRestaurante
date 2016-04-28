@@ -65,7 +65,7 @@
 	            <tr>
 	                <th scope="row">${delivery.id}</th>
 	                <td><fmt:formatDate type="date" value="${delivery.data}" /></td>
-					<td>${delivery.total}</td>
+					<td>R$: ${delivery.total}</td>
 					<td>${delivery.status}</td>
 					<td>${delivery.cliente.nome}</td>
 					<td></td>
@@ -78,7 +78,7 @@
 	            <tr>
 	                <th scope="row">${tradicional.id}</th>
 	                <td><fmt:formatDate type="date" value="${tradicional.data}" /></td>
-					<td>${tradicional.total}</td>
+					<td>R$: ${tradicional.total}</td>
 					<td>${tradicional.status}</td>
 					<td></td>
 					<td>${tradicional.funcionario.nome}</td>

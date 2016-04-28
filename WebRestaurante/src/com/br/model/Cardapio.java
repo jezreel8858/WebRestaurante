@@ -22,7 +22,9 @@ public class Cardapio implements EntityClass{
 	@JoinColumn(name="categoria_id")
 	private Categoria categoria;
 	
-	public Cardapio(){}
+	public Cardapio(){
+		
+	}
 	public Cardapio(Long id){
 		this.id = id;
 	}

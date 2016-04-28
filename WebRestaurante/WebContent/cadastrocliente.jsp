@@ -85,7 +85,7 @@
                	 		</div>
            	 		<label for="cData" class="col-sm-2 form-control-label">Data de Nascimento</label>  
                     	<div class="col-sm-10"> 
-                        <p>	<input class="form-control" id="cData" type="date" name="tData" > </p>
+                        <p>	<input class="form-control" id="cData" type="date" name="tData" required="required" > </p>
                	 		</div>
                 </div>
             </fieldset>
