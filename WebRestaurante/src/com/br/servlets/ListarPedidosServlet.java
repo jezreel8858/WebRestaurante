@@ -2,6 +2,7 @@ package com.br.servlets;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.br.model.Delivery;
+import com.br.model.Pedido;
 import com.br.model.Tradicional;
 import com.br.services.DeliveryService;
 import com.br.services.TradicionalService;
@@ -19,6 +21,7 @@ public class ListarPedidosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Delivery> pedidosD;
 	private List<Tradicional> pedidosT;
+	private List<Pedido> pedidos;
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		 
@@ -26,9 +29,10 @@ public class ListarPedidosServlet extends HttpServlet {
 			response.sendRedirect("LoginSistema");
 			return;
 		}
-		if(pedidosD == null || pedidosT == null || request.getSession().getAttribute("deliverys") == null || request.getSession().getAttribute("tradicionais") == null){
+		if(pedidosD == null || pedidosT == null || pedidos == null || request.getSession().getAttribute("pedidos") == null || request.getSession().getAttribute("deliverys") == null || request.getSession().getAttribute("tradicionais") == null){
 			pedidosD = new ArrayList<>();
 			pedidosT = new ArrayList<>();
+			pedidos = new ArrayList<>();
 		}
 		
 		String status = request.getParameter("status");
@@ -40,32 +44,41 @@ public class ListarPedidosServlet extends HttpServlet {
 		
 		if(status!=null && idNumero != null && tipo != null){
 			if(tipo.equals("Todos")){
-				if( status.equals("Todos") ){
-					pedidosD = DeliveryService.listar();
-					pedidosT = TradicionalService.listar();
-				} else {
-					pedidosD = DeliveryService.procurarPorStatus(status);
-					pedidosT = TradicionalService.procurarPorStatus(status);
+				pedidos = new ArrayList<>();
+				pedidosD = DeliveryService.listar();
+				pedidosT = TradicionalService.listar();
+				for (Delivery pedido : pedidosD) {
+					pedidos.add(pedido);
 				}
+				for (Tradicional pedido : pedidosT) {
+					pedidos.add(pedido);
+				} 
+				pedidos.sort(new Comparator<Pedido>() {
+					@Override
+					public int compare(Pedido ped1, Pedido ped2) {
+						// TODO Auto-generated method stub
+						return ped1.getId().compareTo(ped2.getId());
+					}
+					
+				});
+				request.setAttribute("pedidos", pedidos);
 			} else if (tipo.equals("Delivery")){
 				if( status.equals("Todos") ){
 					pedidosD = DeliveryService.listar();
 				} else {
 					pedidosD = DeliveryService.procurarPorStatus(status);
 				}
+				request.setAttribute("pedidos", pedidosD);
 			} else {
 				if( status.equals("Todos") ){
 					pedidosT = TradicionalService.listar();
 				} else {
 					pedidosT = TradicionalService.procurarPorStatus(status);
 				}
+				request.setAttribute("pedidos", pedidosT);
 			}
 				
-		}	
-		
-		request.setAttribute("deliverys", pedidosD);
-		request.setAttribute("tradicionais", pedidosT);
-		
+		}			
 		request.getRequestDispatcher("listarpedidos.jsp").forward(request, response);
 	}
 

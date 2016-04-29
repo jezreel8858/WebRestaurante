@@ -61,29 +61,31 @@
 	            </thead>
 	            <tbody>
 
-				<c:forEach var="delivery" items="${deliverys}">
+				<c:forEach var="pedidos" items="${pedidos}">
 	            <tr>
-	                <th scope="row">${delivery.id}</th>
-	                <td><fmt:formatDate type="date" value="${delivery.data}" /></td>
-					<td>R$: ${delivery.total}</td>
-					<td>${delivery.status}</td>
-					<td>${delivery.cliente.nome}</td>
-					<td></td>
-					<td>Delivery</td>
-					<td><a href="DetalharDeliveryCliente?id=${delivery.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
-	
-	            </tr>
-	            </c:forEach>
-	            <c:forEach var="tradicional" items="${tradicionais}">
-	            <tr>
-	                <th scope="row">${tradicional.id}</th>
-	                <td><fmt:formatDate type="date" value="${tradicional.data}" /></td>
-					<td>R$: ${tradicional.total}</td>
-					<td>${tradicional.status}</td>
-					<td></td>
-					<td>${tradicional.funcionario.nome}</td>
-					<td>Tradicional</td>
-					<td><a href="#" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
+	                <th scope="row">${pedidos.id}</th>
+	                <td><fmt:formatDate type="date" value="${pedidos.data}" /></td>
+					<td>R$: ${pedidos.total}</td>
+					<td>${pedidos.status}</td>
+					
+					<td>
+						<c:if test="${pedidos.funcionario == null }">
+							<c:out value="${pedidos.cliente.nome}"></c:out>
+						</c:if>
+						<c:if test="${pedidos.funcionario != null }">
+							<c:out value=""></c:out>
+						</c:if>
+					</td>					
+					<td>${pedidos.funcionario.nome}</td>
+					<td>
+						<c:if test="${pedidos.funcionario == null }">
+							<c:out value="Delivery"></c:out>
+						</c:if>
+						<c:if test="${pedidos.funcionario != null }">
+							<c:out value="Tradicional"></c:out>
+						</c:if>
+					</td>
+					<td><a href="DetalharDeliveryCliente?id=${pedidos.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="alterar"><img src="image/edit.png" class="icon-tb"></a></td>
 	
 	            </tr>
 	            </c:forEach>

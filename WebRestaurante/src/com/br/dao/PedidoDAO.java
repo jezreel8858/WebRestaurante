@@ -18,14 +18,13 @@ public class PedidoDAO extends GenericDAO<Pedido>{
 		return Pedido.class;
 	}
 	
-	public List<Pedido> getPedidoStatus(String status){
-		
-		Query query = manager.createQuery("SELECT p FROM Pedido p WHERE p.status = :status");
-		query.setParameter("status", status);
-		
-		@SuppressWarnings("unchecked")
-		List<Pedido> resultList = query.getResultList();
-		return resultList;
+
+	
+	@SuppressWarnings("unchecked")
+	public List<Pedido> procurarPorStatus(String status) {
+		Query result = null;
+		result = manager.createQuery("SELECT p FROM Pedido p WHERE p.status = :status ORDER BY p.id ASC").setParameter("status", status);
+		return (List<Pedido>) result.getResultList();
 	}
 	
 

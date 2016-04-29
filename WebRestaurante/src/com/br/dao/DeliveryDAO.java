@@ -47,7 +47,7 @@ public class DeliveryDAO extends GenericDAO<Delivery>{
 	@SuppressWarnings("unchecked")
 	public List<Delivery> procurarPorStatus(String status) {
 		Query result = null;
-		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.status = :status ORDER BY t.id ASC").setParameter("status", status);
+		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.status = :status ORDER BY d.id ASC").setParameter("status", status);
 		return (List<Delivery>) result.getResultList();
 	}
 

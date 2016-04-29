@@ -34,7 +34,7 @@ public class TradicionalDAO extends GenericDAO<Tradicional> {
 	@SuppressWarnings("unchecked")
 	public List<Tradicional> procurarPorStatus(String status) {
 		Query result = null;
-		result = manager.createQuery("SELECT t FROM Tradicional t WHERE t.status = :status ORDER BY t.id ASCS").setParameter("status", status);
+		result = manager.createQuery("SELECT t FROM Tradicional t WHERE t.status = :status ORDER BY t.id ASC").setParameter("status", status);
 		return (List<Tradicional>) result.getResultList();
 	};
 	
