@@ -54,7 +54,6 @@ public class ListarPedidosServlet extends HttpServlet {
 				pedidos = new ArrayList<>();
 				pedidosD = DeliveryService.listar();
 				pedidosT = TradicionalService.listar();
-				System.out.println("SSSSSSSSSSSSSSSSSSSSSSSSSSSs   " + pedidosT);
 				for (Delivery pedido : pedidosD) {
 					pedidos.add(pedido);
 				}

@@ -16,6 +16,13 @@
 
     <section>
         <div class="centrodiv">
+       		<div class="form-group" >
+			    <div  style="margin-top: 30px;">
+			    	<label class="col-sm-offset-0 col-sm-3">Numero: ${numero}</label>
+        			<label class="col-sm-offset-0 col-sm-3">Status: ${status}</label>			      
+			    </div>
+		  	</div>
+        	
             <table class="table table-sm">
 	            <thead>
 	            <tr>	            
@@ -40,8 +47,8 @@
                 	                	
                   	<div class="col-sm-offset-1 col-sm-10" >                  	 
 	                  	<c:if test="${home == 'funcionario' || home == 'gerente'}">	   
-	                  		<a href="AlterarPedido?idPedido=${idPedido}&status=Atendido&tipo=${tipo}" style="margin-left: 0px;" class="btn btn-secondary">Atender</a>  
-	                  		<a href="AlterarPedido?idPedido=${idPedido}&status=Cancelado&tipo=${tipo}" style="margin-left: 80px;" class="btn btn-secondary">Cancelar</a>  
+	                  		<a href="AlterarPedido?idPedido=${numero}&status=Atendido&tipo=${tipo}" style="margin-left: 0px;" class="btn btn-secondary">Atender</a>  
+	                  		<a href="AlterarPedido?idPedido=${numero}&status=Cancelado&tipo=${tipo}" style="margin-left: 80px;" class="btn btn-secondary">Cancelar</a>  
 	                  		<a href="javascript:history.back();" style="margin-left: 100px;margin-right: auto;float: right;" class="btn btn-secondary">Voltar</a>                   		
 	                  	</c:if>	
 	                  	<c:if test="${home != 'funcionario' && home != 'gerente'}">

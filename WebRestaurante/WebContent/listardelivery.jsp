@@ -50,13 +50,13 @@
 	            </thead>
 	            <tbody>
 
-				<c:forEach var="delivery" items="${deliverys}">
+				<c:forEach var="pedido" items="${pedidos}">
 	            <tr>
-	                <th scope="row">${delivery.id}</th>
-	                <td><fmt:formatDate type="date" value="${delivery.data}" /></td>
-					<td>R$: ${delivery.total}</td>
-					<td>${delivery.status}</td>
-					<td><a href="DetalharDelivery?idPedido=${delivery.id}&tipo=Delivery" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${delivery.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
+	                <th scope="row">${pedido.id}</th>
+	                <td><fmt:formatDate type="date" value="${pedido.data}" /></td>
+					<td>R$: ${pedido.total}</td>
+					<td>${pedido.status}</td>
+					<td><a href="DetalharPedido?idPedido=${pedido.id}&tipo=Delivery&numero=${pedido.id}&status=${pedido.status}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${pedido.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
 	
 	            </tr>
 	            </c:forEach>

@@ -17,7 +17,7 @@ import com.br.services.DeliveryService;
 import com.br.services.TradicionalService;
 
 
-public class DetalharDeliveryServlet extends HttpServlet {
+public class DetalharPedidoServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
@@ -27,15 +27,16 @@ public class DetalharDeliveryServlet extends HttpServlet {
 			return;
 		}
 		
-		String idPedido = request.getParameter("idPedido");
+		String numero = request.getParameter("numero");
 		String tipo = request.getParameter("tipo");
+		String status =  request.getParameter("status");
 		Pedido pedido = null;
 		
 		if(tipo.equals("Delivery")){
-			Delivery ped = new Delivery(Long.valueOf(idPedido));
+			Delivery ped = new Delivery(Long.valueOf(numero));
 			pedido = DeliveryService.procurar(ped);
 		} else if (tipo.equals("Tradicional")){
-			Tradicional ped = new Tradicional(Long.valueOf(idPedido));
+			Tradicional ped = new Tradicional(Long.valueOf(numero));
 			pedido = TradicionalService.procurar(ped);
 		}
 		
@@ -50,9 +51,10 @@ public class DetalharDeliveryServlet extends HttpServlet {
 		
 		request.getSession().setAttribute("itens",itens);
 		request.setAttribute("tipo", tipo);
-		request.setAttribute("idPedido", idPedido);
+		request.setAttribute("numero", numero);
+		request.setAttribute("status", status);
 		
-		request.getRequestDispatcher("detalhardeliverycliente.jsp").forward(request, response);
+		request.getRequestDispatcher("detalharpedido.jsp").forward(request, response);
 	}
 
 

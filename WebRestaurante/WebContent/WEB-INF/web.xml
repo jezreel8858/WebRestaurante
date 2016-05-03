@@ -120,12 +120,12 @@
     <url-pattern>/RemoverDelivery</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>DetalharDelivery</servlet-name>
-    <servlet-class>com.br.servlets.DetalharDeliveryServlet</servlet-class>
+    <servlet-name>DetalharPedido</servlet-name>
+    <servlet-class>com.br.servlets.DetalharPedidoServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DetalharDelivery</servlet-name>
-    <url-pattern>/DetalharDelivery</url-pattern>
+    <servlet-name>DetalharPedido</servlet-name>
+    <url-pattern>/DetalharPedido</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ListarPedidos</servlet-name>

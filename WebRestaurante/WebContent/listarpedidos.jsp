@@ -61,33 +61,33 @@
 	            </thead>
 	            <tbody>
 
-				<c:forEach var="pedidos" items="${pedidos}">
+				<c:forEach var="pedido" items="${pedidos}">
 	            <tr>
-	                <th scope="row">${pedidos.id}</th>
-	                <td><fmt:formatDate type="date" value="${pedidos.data}" /></td>
-					<td>R$: ${pedidos.total}</td>
-					<td>${pedidos.status}</td>
+	                <th scope="row">${pedido.id}</th>
+	                <td><fmt:formatDate type="date" value="${pedido.data}" /></td>
+					<td>R$: ${pedido.total}</td>
+					<td>${pedido.status}</td>
 					
 					<td>
-						<c:if test="${pedidos.funcionario == null }">
-							<c:out value="${pedidos.cliente.nome}"></c:out>
+						<c:if test="${pedido.funcionario == null }">
+							<c:out value="${pedido.cliente.nome}"></c:out>
 						</c:if>
-						<c:if test="${pedidos.funcionario != null }">
+						<c:if test="${pedido.funcionario != null }">
 							<c:out value=""></c:out>
 						</c:if>
 					</td>					
-					<td>${pedidos.funcionario.nome}</td>
+					<td>${pedido.funcionario.nome}</td>
 					<td>
-						<c:if test="${pedidos.funcionario == null }">
+						<c:if test="${pedido.funcionario == null }">
 							<c:set var="tipo" value="Delivery"></c:set>
 							<c:out value="Delivery"></c:out>
 						</c:if>
-						<c:if test="${pedidos.funcionario != null }">
+						<c:if test="${pedido.funcionario != null }">
 						<c:set var="tipo" value="Tradicional"></c:set>
 							<c:out value="Tradicional"></c:out>
 						</c:if>
 					</td>
-					<td><a href="DetalharDelivery?idPedido=${pedidos.id}&tipo=${tipo}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="alterar"><img src="image/edit.png" class="icon-tb"></a></td>
+					<td><a href="DetalharPedido?numero=${pedido.id}&tipo=${tipo}&status=${pedido.status}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="alterar"><img src="image/edit.png" class="icon-tb"></a></td>
 	
 	            </tr>
 	            </c:forEach>

@@ -38,7 +38,7 @@ public class ListarDeliveryServlet extends HttpServlet{
 			}
 		}	
 		 
-		request.setAttribute("deliverys", pedidos);
+		request.setAttribute("pedidos", pedidos);
 		request.getRequestDispatcher("listardelivery.jsp").forward(request, response);
 	}
 
