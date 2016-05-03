@@ -8,7 +8,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.br.model.Cliente;
 import com.br.model.Mesa;
+import com.br.model.Usuario;
 import com.br.services.MesaService;
 
 //@WebServlet("/listarMesa")
@@ -20,12 +22,15 @@ public class ListarMesaServlet extends HttpServlet{
 			response.sendRedirect("LoginSistema");
 			return;
 		}
+		Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+		if(usuario instanceof Cliente){
+			response.sendRedirect("LoginSistema");
+			return;
+		}
 		doPost(request, response);
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
-	 */
+
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getSession().getAttribute("usuario") == null){
 			response.sendRedirect("LoginSistema");

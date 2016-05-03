@@ -62,7 +62,7 @@
                	<div class="form-group" >
           	     	<label for="cNome" class="col-sm-2 form-control-label">Nome:</label>    
 	           	     	<div class="col-sm-10"> 
-	            	     <p>	<input class="form-control" id="cNome" type="text" name="tNome" size="30" maxlength="30" value="<c:out value="${usuario.nome}" />" required> </p>
+	            	     <p>	<input class="form-control" id="cNome" type="text" name="tNome" size="30" maxlength="30" value="<c:out value="${usuario.nome}" />" required="required"> </p>
 						</div>
 				
 					<label for="cTelefone" class="col-sm-2 form-control-label">Telefone:</label>    
@@ -86,38 +86,38 @@
                 <div class="form-group">
                      <label for="cRua" class="col-sm-2 form-control-label">Rua:</label>     
                      <div class="col-sm-10"> 
-                        <p>	<input class="form-control" id="cRua" type="text" name="tRua" value="<c:out value="${usuario.endereco.logradouro}"/>" > </p>
+                        <p>	<input class="form-control" id="cRua" type="text" name="tRua" value="<c:out value="${usuario.endereco.logradouro}"/>"  required="required" > </p>
                		 </div>
                
                      <label for="cNumero" class="col-sm-2 form-control-label">Número:</label>  
                      <div class="col-sm-10"> 
-                     	<p>	<input class="form-control" id="cNumero" type="text" name="tNumero" value="${usuario.endereco.numero}"/> </p>
+                     	<p>	<input class="form-control" id="cNumero" type="text" name="tNumero" value="${usuario.endereco.numero}"  required="required"/> </p>
                 	 </div>
                 
                      <label for="cComplemento" class="col-sm-2 form-control-label">Complemento:</label>     
                      <div class="col-sm-10"> 
-                     	<p>	<input class="form-control" id="cComplemento" type="text" name="tComplemento" value="${usuario.endereco.complemento}"/> </p>
+                     	<p>	<input class="form-control" id="cComplemento" type="text" name="tComplemento" value="${usuario.endereco.complemento}"  required="required"/> </p>
                 	 </div>
                 
                      <label for="cBairro" class="col-sm-2 form-control-label">Bairro:</label>    
                      <div class="col-sm-10"> 
-                     	<p>	<input class="form-control" id="cBairro" type="text" name="tBairro" value="${usuario.endereco.bairro}"/> </p>
+                     	<p>	<input class="form-control" id="cBairro" type="text" name="tBairro" value="${usuario.endereco.bairro}"  required="required"/> </p>
                 	 </div>
                 
                      <label for="cCep" class="col-sm-2 form-control-label">CEP:</label>   
                      <div class="col-sm-10">   
-                     	<p>	<input class="form-control" id="cCep" type="text" name="tCep" size="6" maxlength="9" placeholder="00000-000" value="${usuario.endereco.cep}"  onkeypress="return mascaraCEP(this,'#####-###')" > </p>
+                     	<p>	<input class="form-control" id="cCep" type="text" name="tCep" size="6" maxlength="9" placeholder="00000-000" value="${usuario.endereco.cep}"  required="required" onkeypress="return mascaraCEP(this,'#####-###')" > </p>
                 	 </div>
                	
                      <label for="cPais" class="col-sm-2 form-control-label">País:</label>
                      <div class="col-sm-10"> 
-                     	<p> <input class="form-control" id="cPais" type="text" name="tPais" value="${usuario.endereco.pais}"/> </p>
+                     	<p> <input class="form-control" id="cPais" type="text" name="tPais" required="required" value="${usuario.endereco.pais}"/> </p>
                 	 </div>
                	 
 	                     <label for="cEst"  class="col-sm-2 form-control-label">Estado:</label>
 	                   	 <div class="col-sm-10">
 	                   	 <p>
-		                   	 <select id="cEst" name="tEst" class="form-control" >
+		                   	 <select id="cEst" name="tEst" class="form-control"  required="required" >
 		                   		<option value="${usuario.endereco.estado}" > </option>
 		                        <option value="DF" >Distrito Federal</option>
 		                        <option value="MT">Mato Grosso</option>
@@ -131,7 +131,7 @@
 	                	
 	                	<label for="cCidade" class="col-sm-2 form-control-label">Cidade:</label>
 	                	<div class="col-sm-10"> 
-	                		<input class="form-control" id="cCidade" type="text" name="tCidade" list="lisCidade"  value="${usuario.endereco.cidade}">
+	                		<input class="form-control" id="cCidade" type="text" name="tCidade" list="lisCidade"  required="required" value="${usuario.endereco.cidade}">
 	                		 <p>
 		                		 <datalist  id="lisCidade" >
 			                            <option value="João Pessoa">João Pessoa</option>

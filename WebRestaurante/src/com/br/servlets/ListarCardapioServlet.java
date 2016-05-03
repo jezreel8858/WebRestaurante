@@ -11,6 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.br.model.Cardapio;
 import com.br.model.Categoria;
+import com.br.model.Cliente;
+import com.br.model.Usuario;
 import com.br.services.CardapioService;
 import com.br.services.CategoriaService;
 
@@ -22,6 +24,11 @@ public class ListarCardapioServlet extends HttpServlet {
  
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getSession().getAttribute("usuario") == null){
+			response.sendRedirect("LoginSistema");
+			return;
+		}
+		Usuario usuario = (Usuario)request.getSession().getAttribute("usuario");
+		if(usuario instanceof Cliente){
 			response.sendRedirect("LoginSistema");
 			return;
 		}
