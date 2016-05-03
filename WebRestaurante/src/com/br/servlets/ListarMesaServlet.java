@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -11,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.br.model.Mesa;
 import com.br.services.MesaService;
 
-//@WebServlet("/listarMesa")
+@WebServlet("/listarMesa")
 public class ListarMesaServlet extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
@@ -35,7 +36,7 @@ public class ListarMesaServlet extends HttpServlet{
 		String descricao = request.getParameter("nome");
 		String opcao = request.getParameter("opcao");
 		
-		if(descricao != null || opcao != null){
+		if(descricao != null){
 			Mesa filtro = new Mesa();
 			filtro.setDescricao(descricao);
 			if(opcao.equals("0")){

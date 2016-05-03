@@ -8,6 +8,7 @@ import javax.persistence.EntityManager;
 
 import com.br.dao.CardapioDAO;
 import com.br.model.Cardapio;
+import com.br.model.Categoria;
 import com.br.util.JPAUtil;
 
 public class CardapioService {
@@ -126,7 +127,30 @@ public class CardapioService {
 		}
 		return result;
 	}
-
+	
+	public static List<Cardapio> listarAtivo(){
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		List<Cardapio> result = Collections.emptyList();
+		try{
+			CardapioDAO cardapioDAO = new CardapioDAO(manager);
+			result = cardapioDAO.getAllAtivo();
+			
+		}catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		finally{
+			manager.close();
+		}
+		return result;
+	}
+	
+	
+	public static void desativar(Cardapio car) {
+		Cardapio cardapio = procurar(car);
+		cardapio.setStatus(!cardapio.isStatus());
+		atualizar(cardapio);
+	}
+	
 	public static List<Cardapio> buscarFiltro(Cardapio filtro){
 		EntityManager  manager =  JPAUtil.getEntityManager();
 		List<Cardapio> cardapios = new ArrayList<Cardapio>();

@@ -42,7 +42,10 @@ public class ListarCardapioServlet extends HttpServlet {
 		filtro.setNome(filtroNome);
 		
 		if(filtroCategoria != null && !filtroCategoria.equals("")){
-			filtroCa.setId(new Long(filtroCategoria));
+			if(!filtroCategoria.equals("0")){
+				filtroCa.setId(new Long(filtroCategoria));
+				
+			}
 			
 		}
 		filtro.setCategoria(filtroCa);

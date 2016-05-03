@@ -20,7 +20,7 @@ public class MesaDAO extends GenericDAO<Mesa>{
 	
 	@SuppressWarnings("unchecked")
 	public List<Mesa> buscarFiltro(Mesa filtro){
-		String str = "select m from Mesa m where upper(descricao) like upper(:descricao)";
+		String str = "select m from Mesa m where upper(m.descricao) like upper(:descricao)";
 		if(filtro.getDescricao() == null){
 			filtro.setDescricao("");
 		}

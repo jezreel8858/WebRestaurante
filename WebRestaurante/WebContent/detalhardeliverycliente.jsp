@@ -4,16 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<c:if test="${home == 'cliente'}">
-<%@ include file="navcliente.jsp" %>
-</c:if>
-<c:if test="${home == 'funcionario'}">
-<%@ include file="navfuncionario.jsp" %>
-</c:if>
-<c:if test="${home == 'gerente'}">
-<%@ include file="navgerente.jsp" %>
-</c:if>
-
+<%@ include file="header.jsp" %>
     <section>
         <div class="centrodiv">
             <table class="table table-sm">
@@ -25,11 +16,14 @@
 	            </tr>
 	            </thead>
 	            <tbody>
-		            <tr>
-		            	<td><c:out value="${item.cardapio.nome}" /></td>
-		            	<td><c:out value="${item.qtd}"/></td>
-		            	<td><c:out value="R$: ${item.qtd*item.cardapio.preco}"/></td>		                             
+	            	<c:forEach var="item" items="${itens}">
+	            	<tr>
+		            	<td>${item.cardapio.nome}</td>
+		            	<td>${item.qtd}</td>
+		            	<td><fmt:formatNumber type="currency" currencySymbol="R$ " value="${item.qtd*item.cardapio.preco}"/></td>		                             
 		            </tr>
+		            </c:forEach>
+		            
 	            </tbody>
 	        </table>               	
         </div>       

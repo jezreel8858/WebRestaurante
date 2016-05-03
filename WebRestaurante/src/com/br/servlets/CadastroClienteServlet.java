@@ -17,7 +17,6 @@ import com.br.model.Login;
 import com.br.services.ClienteService;
 
 
-//@WebServlet("/cadastroCliente")
 public class CadastroClienteServlet extends HttpServlet {
 	
 
@@ -26,6 +25,12 @@ public class CadastroClienteServlet extends HttpServlet {
 
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		if(request.getSession().getAttribute("usuario") != null){
+			response.sendRedirect("LoginSistema");
+			return;
+		}
+	
 		
 		request.getRequestDispatcher("cadastrocliente.jsp").forward(request, response);
 	
@@ -65,7 +70,7 @@ public class CadastroClienteServlet extends HttpServlet {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-			
+		cliente.setDataCadastro(new Date());	
 		cliente.setDataNasc(dataNascimento);
 		cliente.setEmail(email);
 		Endereco endereco = new Endereco();
@@ -78,10 +83,9 @@ public class CadastroClienteServlet extends HttpServlet {
 		endereco.setEstado(estado);
 		endereco.setCidade(cidade);
 		cliente.setEndereco(endereco);
-		cliente.setDesativado(true);
+		cliente.setDesativado(false);
 		
 		ClienteService.criar(cliente);
-		System.out.println(ClienteService.listar());
 		request.getRequestDispatcher("LoginSistema").forward(request, response);
 	}
 

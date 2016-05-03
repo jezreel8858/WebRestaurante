@@ -4,19 +4,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
-<c:if test="${home == 'cliente'}">
-<%@ include file="navcliente.jsp" %>
-</c:if>
-<c:if test="${home == 'funcionario'}">
-<%@ include file="navfuncionario.jsp" %>
-</c:if>
-<c:if test="${home == 'gerente'}">
-<%@ include file="navgerente.jsp" %>
-</c:if>
-
+<%@ include file="header.jsp" %>
 	<section>
 		<div class="centrodiv1">
-			<form action="ListarPedidos">
+			<form action="listarPedidos">
 				<div class="form-group row">
 				
 						<label for="inputNumero" class="col-sm-2 form-control-label">Numero do Pedido</label>
@@ -65,7 +56,7 @@
 	            <tr>
 	                <th scope="row">${pedidos.id}</th>
 	                <td><fmt:formatDate type="date" value="${pedidos.data}" /></td>
-					<td>R$: ${pedidos.total}</td>
+					<td><fmt:formatNumber type="currency" currencySymbol="R$ " value="${pedidos.total}" /></td>
 					<td>${pedidos.status}</td>
 					
 					<td>
@@ -85,7 +76,10 @@
 							<c:out value="Tradicional"></c:out>
 						</c:if>
 					</td>
-					<td><a href="DetalharDeliveryCliente?id=${pedidos.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="alterar"><img src="image/edit.png" class="icon-tb"></a></td>
+					<td>
+						<a href="detalharDeliveryCliente?id=${pedidos.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> 
+						<a href="#" title="alterar"><img src="image/edit.png" class="icon-tb"></a>
+					</td>
 	
 	            </tr>
 	            </c:forEach>

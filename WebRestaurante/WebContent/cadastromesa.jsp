@@ -4,16 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<c:if test="${home == 'cliente'}">
-<%@ include file="navcliente.jsp" %>
-</c:if>
-<c:if test="${home == 'funcionario'}">
-<%@ include file="navfuncionario.jsp" %>
-</c:if>
-<c:if test="${home == 'gerente'}">
-<%@ include file="navgerente.jsp" %>
-</c:if>
-
+<%@ include file="header.jsp" %>
     <section>
         <div class="centrodiv">
             <form action="cadastroMesa" method="post">

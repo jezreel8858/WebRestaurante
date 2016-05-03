@@ -1,11 +1,14 @@
 package com.br.services;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
+import com.br.dao.CardapioDAO;
 import com.br.dao.FuncionarioDAO;
+import com.br.model.Cardapio;
 import com.br.model.Funcionario;
 import com.br.util.JPAUtil;
 
@@ -109,6 +112,19 @@ public class FuncionarioService {
 			manager.close();
 		}
 		return result;
+	}
+
+	public static List<Funcionario> buscarFiltro(Funcionario filtro) {
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		List<Funcionario> funcionarios = new ArrayList<Funcionario>();
+		try{
+			FuncionarioDAO funcionarioDAO = new FuncionarioDAO(manager);
+			funcionarios = funcionarioDAO.buscar(filtro);
+		}
+		finally{
+			manager.close();
+		}
+		return funcionarios;
 	}
 
 	

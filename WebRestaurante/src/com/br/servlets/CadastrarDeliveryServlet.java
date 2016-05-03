@@ -4,10 +4,12 @@ import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,53 +22,51 @@ import com.br.services.CardapioService;
 import com.br.services.DeliveryService;
 import com.sun.org.apache.xerces.internal.impl.xpath.regex.ParseException;
 
-
+@WebServlet("/cadastroDelivery")
 public class CadastrarDeliveryServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-	List<ItemCardapio> lista;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getSession().getAttribute("usuario") == null){
 			response.sendRedirect("LoginSistema");
 			return;
 		}
-		if(lista == null || request.getSession().getAttribute("itens") == null){			
-			lista = new ArrayList<>();
-		}
-		
-		request.getSession().setAttribute("itens", lista);
-		request.setAttribute("cardapios", CardapioService.listar());
 		
 		String pagamento = request.getParameter("pagamento");
 		Cliente cliente = (Cliente)request.getSession().getAttribute("usuario");
 		
-		if(pagamento != null && cliente != null){
+		if(pagamento != null && !pagamento.isEmpty() && !getItensSession(request).isEmpty()){
 			Delivery delivery = new Delivery();
+			delivery.setItensCardapio(getItensSession(request));
 
-			Date dataPedido = null;
-			DateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 			try {
-				try {
-					dataPedido = (Date) format.parse(format.format(new Date()));
-				} catch (java.text.ParseException e) {
+				float pag = Float.parseFloat(pagamento);
+				
+				if(delivery.getTotal() < pag){
+					delivery.setTroco(pag - delivery.getTotal());
+					delivery.setData(new Date());
+					delivery.setCliente(cliente);
+									
+					delivery.setStatus("Pendente");
+					delivery.setDesativado(false);
 					
-					e.printStackTrace();
+					DeliveryService.criar(delivery);
+					request.getSession().removeAttribute("itens");
+					request.setAttribute("mensagem", "Pedido efetuado com Sucesso!");
+					request.getRequestDispatcher("listarDelivery").forward(request, response);
+					return;
+				}else{
+					request.setAttribute("erro", "Adicione o preço do pagamento");
 				}
-			} catch (ParseException e1) {
-				e1.printStackTrace();
+			} catch (Exception e) {
+
 			}
-			delivery.setData(dataPedido);
-			delivery.setCliente(cliente);
-			delivery.setItensCardapio(lista);				
-			delivery.setStatus("Pendente");
-			DeliveryService.criar(delivery);			
-			request.setAttribute("mensagem", "Pedido efetuado com Sucesso!");
-			request.getRequestDispatcher("listarDelivery").forward(request, response);
-		} else {
-			request.getSession().setAttribute("itens", lista);
-			request.setAttribute("cardapios", CardapioService.listar());
-			request.getRequestDispatcher("cadastrodelivery.jsp").forward(request, response);
-		}
+			
+		} 
+			
+		request.setAttribute("cardapios", CardapioService.listarAtivo());
+		request.getRequestDispatcher("cadastrodelivery.jsp").forward(request, response);
+		
 	}
 
 
@@ -84,15 +84,33 @@ public class CadastrarDeliveryServlet extends HttpServlet {
 		itemC.setQtd(Integer.valueOf(qtd));
 		
 		boolean exist = false;
-		for (ItemCardapio itemCardapio : lista) {
+		for (ItemCardapio itemCardapio : getItensSession(request)) {
 			if(itemCardapio.getCardapio().getNome().equals(cardapio.getNome())){
 				itemCardapio.setQtd(itemCardapio.getQtd()+Integer.valueOf(qtd));
 				exist = true;
 			}
 		}
 		if(!exist)
-			lista.add(itemC);
+			addItem(request, itemC);
+		
 		doGet(request, response);
 	}
-
+	
+	private void addItem(HttpServletRequest request, ItemCardapio item){
+		List<ItemCardapio> lista = getItensSession(request);
+		lista.add(item);
+		setItensSession(request, lista);
+	}
+	
+	private List<ItemCardapio> getItensSession(HttpServletRequest request){
+		List<ItemCardapio> lista = (List<ItemCardapio>) request.getSession().getAttribute("itens");
+		if(lista == null){
+			lista = new ArrayList<>();
+		}
+		return lista;
+	}
+	
+	private void setItensSession(HttpServletRequest request, List lista){
+		request.getSession().setAttribute("itens", lista);
+	}
 }

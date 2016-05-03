@@ -10,8 +10,10 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.br.model.Cliente;
 import com.br.model.Funcionario;
+import com.br.model.Gerente;
 import com.br.model.Login;
 import com.br.model.Usuario;
+import com.br.services.GerenteService;
 import com.br.services.UsuarioService;
 
 
@@ -25,7 +27,7 @@ public class LoginServlet extends HttpServlet {
 			request.getRequestDispatcher("home.jsp").forward(request, response);
 			return;
 		}
-		destroy();
+		
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 	

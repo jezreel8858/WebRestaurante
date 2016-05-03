@@ -13,7 +13,6 @@ import javax.persistence.InheritanceType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.JOINED)
-
 public class Usuario implements EntityClass, Comparable<Usuario>{
 
 	@Id

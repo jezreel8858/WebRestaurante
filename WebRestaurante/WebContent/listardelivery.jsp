@@ -3,17 +3,8 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-    
-<c:if test="${home == 'cliente'}">
-<%@ include file="navcliente.jsp" %>
-</c:if>
-<c:if test="${home == 'funcionario'}">
-<%@ include file="navfuncionario.jsp" %>
-</c:if>
-<c:if test="${home == 'gerente'}">
-<%@ include file="navgerente.jsp" %>
-</c:if>
 
+<%@ include file="header.jsp" %>
 	<section>
 		<div class="centrodiv">
 			<form action="listarDelivery">
@@ -54,9 +45,12 @@
 	            <tr>
 	                <th scope="row">${delivery.id}</th>
 	                <td><fmt:formatDate type="date" value="${delivery.data}" /></td>
-					<td>R$: ${delivery.total}</td>
+					<td><fmt:formatNumber type="currency" currencySymbol="R$ " value="${delivery.total}" /></td>
 					<td>${delivery.status}</td>
-					<td><a href="DetalharDeliveryCliente?id=${delivery.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${delivery.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
+					<td>
+						<a href="detalharDeliveryCliente?id=${delivery.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> 
+						<a href="removerDelivery?id=${delivery.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a>
+					</td>
 	
 	            </tr>
 	            </c:forEach>

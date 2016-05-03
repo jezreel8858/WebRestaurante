@@ -4,35 +4,31 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<c:if test="${home == 'cliente'}">
-<%@ include file="navcliente.jsp" %>
-</c:if>
-<c:if test="${home == 'funcionario'}">
-<%@ include file="navfuncionario.jsp" %>
-</c:if>
-<c:if test="${home == 'gerente'}">
-<%@ include file="navgerente.jsp" %>
-</c:if>
+<%@ include file="header.jsp" %>
     <section>
         <div class="centrodiv">
             <form action="cadastroCardapio" method="post">
+            	<input type='hidden' name='id' value="${cardapio.id}" />
                 <div class="form-group row">
                     <label for="inputNome" class="col-sm-2 form-control-label">Nome</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome">
+                        <input type="text" class="form-control" id="inputNome" placeholder="Nome" name="nome" value="${cardapio.nome}" required>
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputPreco" class="col-sm-2 form-control-label">Preço</label>
+                    <label for="inputPreco" class="col-sm-2 form-control-label" >Preço</label>
                     <div class="col-sm-4">
-                        <input type="number" step="any" min=0 class="form-control" id="inputPreco" placeholder="0.00" name="preco">
+                        <input type="number" step="0.01" min=0 class="form-control" id="inputPreco" placeholder="0.00" name="preco" value="${cardapio.preco}"required>
                     </div>
                     <label for="inputCategoria" class="col-sm-2 form-control-label">Categoria</label>
                     <div class="col-sm-4">
-                       
+                       		
                             <select id="inputReserva"  name="opcao" class="form-control" >
+                            	<c:if test="${cardapio.categoria.status == false}">
+                            		<option  value="${cardapio.categoria.id}" selected> ${cardapio.categoria.nome}</option> 
+                            	</c:if>
 	                         			<c:forEach var="categoria" items="${categorias}">
-	                         				<option  value="${categoria.id}" >${categoria.nome}</option>
+	                         				<option  value="${categoria.id}"  <c:if test="${categoria.nome == cardapio.categoria.nome}">selected </c:if>>${categoria.nome}</option>
 	                         			</c:forEach>			                        
 	                    	 </select>
                       

@@ -3,6 +3,7 @@ package com.br.servlets;
 import java.io.IOException;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.br.model.Cardapio;
 import com.br.services.CardapioService;
 
-//@WebServlet("/removerCardapio")
+@WebServlet("/removerCardapio")
 public class RemoverCardapioServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
@@ -22,8 +23,8 @@ public class RemoverCardapioServlet extends HttpServlet {
 		}
 		
 		String id = request.getParameter("id");
-		CardapioService.remover(new Cardapio(new Long(id)));
-		response.sendRedirect("listarCardapios");
+		CardapioService.desativar(new Cardapio(new Long(id)));
+		response.sendRedirect("listarCardapio");
 	}
 	
 }

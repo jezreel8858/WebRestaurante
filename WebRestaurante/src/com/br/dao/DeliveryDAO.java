@@ -50,6 +50,30 @@ public class DeliveryDAO extends GenericDAO<Delivery>{
 		result = manager.createQuery("SELECT d FROM Delivery d WHERE d.status = :status ORDER BY d.id ASC").setParameter("status", status);
 		return (List<Delivery>) result.getResultList();
 	}
+	
+	public List<Delivery> buscarFiltro(Delivery filtro){
+		String str = "select d from Delivery d where d.cliente.id = :id and d.desativado = :desativado";
+		
+		if(filtro.getId() != null){
+			str+= " and d.id = :idDelivery";
+		}
+		if(filtro.getStatus() != null && !filtro.getStatus().equals("")){
+			str+= " and d.status = :status";
+		}
+		
+		Query query=manager.createQuery(str);  
+		
+		query.setParameter("id", filtro.getCliente().getId());
+		query.setParameter("desativado", filtro.isDesativado());
+		
+		if(filtro.getStatus() != null && !filtro.getStatus().equals("")){
+			query.setParameter("status", filtro.getStatus());
+		}
+		if(filtro.getId() != null){
+			query.setParameter("idDelivery", filtro.getId());
+		}
+		return query.getResultList();
+	}
 
 	public void desativar(Long id) {
 		Query result = manager.createQuery("SELECT d FROM Delivery d WHERE d.id = :id ").setParameter("id", id);
@@ -57,5 +81,10 @@ public class DeliveryDAO extends GenericDAO<Delivery>{
 		delivery.setDesativado(true);
 		update(delivery);
 		
+	}
+
+	public List<Delivery> buscarFiltroById(Delivery filtro) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 }

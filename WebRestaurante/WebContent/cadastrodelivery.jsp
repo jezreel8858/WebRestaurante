@@ -4,23 +4,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
-<c:if test="${home == 'cliente'}">
-<%@ include file="navcliente.jsp" %>
-</c:if>
-<c:if test="${home == 'funcionario'}">
-<%@ include file="navfuncionario.jsp" %>
-</c:if>
-<c:if test="${home == 'gerente'}">
-<%@ include file="navgerente.jsp" %>
-</c:if>
-	
+<%@ include file="header.jsp" %>	
     <section>
         <div class="centrodiv">
             <form action="cadastroDelivery" method="post">            	
                 <div class="form-group row">
                     <label for="inputNome"  class="col-sm-1	 form-control-label">Produto</label>
                  	<div class="col-sm-4" >
-                         <select id="cCardapio"  name="cardapio" class="form-control" >
+                         <select id="cCardapio"  name="cardapio" class="form-control" required>
 								<c:forEach var="cardapio" items="${cardapios}">
 		                        	<option  value="${cardapio.id}" >${cardapio.nome}</option>		                        	 
 		                        </c:forEach>
@@ -50,8 +41,8 @@
 		            <tr>
 		            	<td>${item.cardapio.nome}</td>
 		            	<td>${item.qtd}</td>
-		            	<td>${item.qtd*item.cardapio.preco}</td>
-		                <td><a href="RemoverItemCardapioDelivery?id=${item.cardapio.id}"><img src="image/delete.png" class="icon-tb"></a></td>	               
+		            	<td><fmt:formatNumber type="currency" currencySymbol="R$ " value="${item.qtd*item.cardapio.preco}"/></td>
+		                <td><a href="removerItemCardapioDelivery?id=${item.cardapio.id}"><img src="image/delete.png" class="icon-tb"></a></td>	               
 		            </tr>
 				</c:forEach>
 	            </tbody>
@@ -81,7 +72,12 @@
 				<div class="alert alert-success" role="alert" style="margin:auto; width: 50%;">
   					${mensagem}.
 				</div>
-			</c:if>	
+				</c:if>	
+				<c:if test="${erro != null}">	
+				<div class="alert alert-warner" role="alert" style="margin:auto; width: 50%;">
+  					${erro}.
+				</div>
+				</c:if>	
     </section>
 
 <%@ include file="footer.jsp" %>

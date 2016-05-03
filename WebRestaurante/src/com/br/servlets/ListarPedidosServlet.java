@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +17,7 @@ import com.br.model.Tradicional;
 import com.br.services.DeliveryService;
 import com.br.services.TradicionalService;
 
-
+@WebServlet("/listarPedidos")
 public class ListarPedidosServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private List<Delivery> pedidosD;
@@ -34,13 +35,15 @@ public class ListarPedidosServlet extends HttpServlet {
 			pedidosT = new ArrayList<>();
 			pedidos = new ArrayList<>();
 		}
-		
+		String id = request.getParameter("id");
 		String status = request.getParameter("status");
 		String idNumero = request.getParameter("numero");
 		String tipo = request.getParameter("tipo");
 		
 		request.setAttribute("tipo", tipo);
 		request.setAttribute("status", status);
+		
+		if(id != null)
 		
 		if(status!=null && idNumero != null && tipo != null){
 			if(tipo.equals("Todos")){

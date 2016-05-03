@@ -1,12 +1,15 @@
 package com.br.services;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
 import javax.persistence.EntityManager;
 
 import com.br.dao.ClienteDAO;
+import com.br.dao.FuncionarioDAO;
 import com.br.model.Cliente;
+import com.br.model.Funcionario;
 import com.br.model.Login;
 import com.br.util.JPAUtil;
 
@@ -129,5 +132,18 @@ public class ClienteService {
 			manager.close();
 		}
 		return result;
+	}
+	
+	public static List<Cliente> buscarFiltro(Cliente filtro) {
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		List<Cliente> cliente = new ArrayList<Cliente>();
+		try{
+			ClienteDAO clienteDAO = new ClienteDAO(manager);
+			cliente = clienteDAO.buscar(filtro);
+		}
+		finally{
+			manager.close();
+		}
+		return cliente;
 	}
 }

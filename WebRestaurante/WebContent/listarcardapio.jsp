@@ -4,15 +4,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt"  prefix="fmt" %> 
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
     
-<c:if test="${home == 'cliente'}">
-<%@ include file="navcliente.jsp" %>
-</c:if>
-<c:if test="${home == 'funcionario'}">
-<%@ include file="navfuncionario.jsp" %>
-</c:if>
-<c:if test="${home == 'gerente'}">
-<%@ include file="navgerente.jsp" %>
-</c:if>
+<%@ include file="header.jsp" %>
 
 	<section>
 		<div class="centrodiv">
@@ -21,11 +13,12 @@
 
 						<label for="inputNome" class="col-sm-1 form-control-label">Nome</label>
 	                    <div class="col-sm-3">
-	                        <input type="text" class="form-control" id="inputNome" name="nome">
+	                        <input type="text" class="form-control" id="inputNome" name="filtroNome">
 	                    </div>
 	                    <label for="inputCategoria" class="col-sm-2 form-control-label">Categoria</label>
 	                   	<div class="col-sm-3" >
-	                         <select id="inputCategoria"  name="opcao" class="form-control" >
+	                         <select id="inputCategoria"  name="filtroCategoria" class="form-control" >
+	                         			<option  value="0" >Todos</option>
 	                         			<c:forEach var="categoria" items="${categorias}">
 	                         				<option  value="${categoria.id }" >${categoria.nome}</option>
 	                         			</c:forEach>			                        
@@ -43,6 +36,7 @@
 	                <th>Codigo</th>
 	                <th>Descrição</th>
 	                <th>Preço</th>
+	                <th>Status</th>
 	                <th>Categoria</th>
 	                <th>Ações</th>
 	            </tr>
@@ -53,11 +47,15 @@
 	            <tr>
 	                <th scope="row">${cardapio.id}</th>
 	                <td>${cardapio.nome}</td>
-	                <td>R$: ${cardapio.preco}</td>
+	                <td><fmt:formatNumber type="currency" currencySymbol="R$ " value="${cardapio.preco}"/></td>
+	                <td>
+	                	<c:if test="${cardapio.status == true}">Ativo</c:if>
+	                	<c:if test="${cardapio.status == false}">Inativo</c:if>
+	                </td>
 					<td>${cardapio.categoria.nome}</td>
 					<td>
 						<a href="cadastroCardapio?id=${cardapio.id}"><img src="image/edit.png" class="icon-tb"></a> 
-						<a href="removerCardapio?id=${cardapio.id}"><img src="image/delete.png" class="icon-tb"></a>
+						<a href="removerCardapio?id=${cardapio.id}"><img src="image/switch.png" class="icon-tb"></a>
 					</td>
 	
 	            </tr>

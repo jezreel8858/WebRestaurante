@@ -1,5 +1,6 @@
 package com.br.services;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Date;
 import java.util.List;
@@ -8,8 +9,10 @@ import javax.persistence.EntityManager;
 
 import com.br.dao.DeliveryDAO;
 import com.br.dao.ItemCardapioDAO;
+import com.br.dao.MesaDAO;
 import com.br.model.Delivery;
 import com.br.model.ItemCardapio;
+import com.br.model.Mesa;
 import com.br.util.JPAUtil;
 
 public class DeliveryService {
@@ -212,6 +215,19 @@ public  static List<Delivery> procurarPorClienteId(Long id) {
 			manager.close();
 		}
 		return lista;
+	}
+	
+	public static List<Delivery> buscarFiltro(Delivery filtro){
+		EntityManager  manager =  JPAUtil.getEntityManager();
+		List<Delivery> mesas = new ArrayList<Delivery>();
+		try{
+			DeliveryDAO deliveryDAO = new DeliveryDAO(manager);
+			mesas = deliveryDAO.buscarFiltro(filtro);
+		}
+		finally{
+			manager.close();
+		}
+		return mesas;
 	}
 
 }

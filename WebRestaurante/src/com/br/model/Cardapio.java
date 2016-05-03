@@ -17,6 +17,7 @@ public class Cardapio implements EntityClass{
 	private Long id;
 	private String nome;
 	private float preco;
+	private boolean status;
 	
 	@ManyToOne
 	@JoinColumn(name="categoria_id")
@@ -51,6 +52,13 @@ public class Cardapio implements EntityClass{
 	}
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+	
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
 	}
 	@Override
 	public String toString() {
