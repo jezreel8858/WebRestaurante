@@ -56,7 +56,7 @@
 	                <td><fmt:formatDate type="date" value="${delivery.data}" /></td>
 					<td>R$: ${delivery.total}</td>
 					<td>${delivery.status}</td>
-					<td><a href="DetalharDeliveryCliente?id=${delivery.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${delivery.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
+					<td><a href="DetalharDelivery?idPedido=${delivery.id}&tipo=Delivery" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="RemoverDelivery?id=${delivery.id}" title="remover"><img src="image/delete.png" class="icon-tb"></a></td>
 	
 	            </tr>
 	            </c:forEach>

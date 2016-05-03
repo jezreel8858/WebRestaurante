@@ -11,6 +11,12 @@ public class Tradicional extends Pedido {
 	@ManyToOne
 	private Mesa mesa;
 
+	public Tradicional(Long id) {
+		this.setId(id);
+	}
+	public Tradicional() {
+	}
+
 	public Mesa getMesa() {
 		return mesa;
 	}

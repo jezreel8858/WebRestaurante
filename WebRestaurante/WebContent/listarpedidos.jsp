@@ -79,13 +79,15 @@
 					<td>${pedidos.funcionario.nome}</td>
 					<td>
 						<c:if test="${pedidos.funcionario == null }">
+							<c:set var="tipo" value="Delivery"></c:set>
 							<c:out value="Delivery"></c:out>
 						</c:if>
 						<c:if test="${pedidos.funcionario != null }">
+						<c:set var="tipo" value="Tradicional"></c:set>
 							<c:out value="Tradicional"></c:out>
 						</c:if>
 					</td>
-					<td><a href="DetalharDeliveryCliente?id=${pedidos.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="alterar"><img src="image/edit.png" class="icon-tb"></a></td>
+					<td><a href="DetalharDelivery?idPedido=${pedidos.id}&tipo=${tipo}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> <a href="#" title="alterar"><img src="image/edit.png" class="icon-tb"></a></td>
 	
 	            </tr>
 	            </c:forEach>

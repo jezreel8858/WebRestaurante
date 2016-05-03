@@ -37,8 +37,17 @@
         </div>       
          	<form	 style="width: 800px;position: relative;margin:0 auto;padding: 1.5rem;">
                 <div class="form-group row" style="margin-top: 30px;">
-                  	<div class="col-sm-offset-6 col-sm-5" >
-                        <a href="javascript:history.back();" style="float:right;" class="btn btn-secondary">Voltar</a>
+                	                	
+                  	<div class="col-sm-offset-1 col-sm-10" >                  	 
+	                  	<c:if test="${home == 'funcionario' || home == 'gerente'}">	   
+	                  		<a href="AlterarPedido?idPedido=${idPedido}&status=Atendido&tipo=${tipo}" style="margin-left: 0px;" class="btn btn-secondary">Atender</a>  
+	                  		<a href="AlterarPedido?idPedido=${idPedido}&status=Cancelado&tipo=${tipo}" style="margin-left: 80px;" class="btn btn-secondary">Cancelar</a>  
+	                  		<a href="javascript:history.back();" style="margin-left: 100px;margin-right: auto;float: right;" class="btn btn-secondary">Voltar</a>                   		
+	                  	</c:if>	
+	                  	<c:if test="${home != 'funcionario' && home != 'gerente'}">
+	                  		<a href="javascript:history.back();" style="float: right;" class="btn btn-secondary">Voltar</a>                   		
+	                  	</c:if>	
+	                  		                      
                     </div>   
                 </div>
             </form>

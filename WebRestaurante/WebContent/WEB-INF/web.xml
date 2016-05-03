@@ -120,12 +120,12 @@
     <url-pattern>/RemoverDelivery</url-pattern>
   </servlet-mapping>
   <servlet>
-    <servlet-name>DetalharDeliveryCliente</servlet-name>
-    <servlet-class>com.br.servlets.DetalharDeliveryClienteServlet</servlet-class>
+    <servlet-name>DetalharDelivery</servlet-name>
+    <servlet-class>com.br.servlets.DetalharDeliveryServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-    <servlet-name>DetalharDeliveryCliente</servlet-name>
-    <url-pattern>/DetalharDeliveryCliente</url-pattern>
+    <servlet-name>DetalharDelivery</servlet-name>
+    <url-pattern>/DetalharDelivery</url-pattern>
   </servlet-mapping>
   <servlet>
     <servlet-name>ListarPedidos</servlet-name>
@@ -144,12 +144,20 @@
     <url-pattern>/DesativarContaCliente</url-pattern>
   </servlet-mapping>
   <servlet>
-  	<servlet-name>AlterarContaCliente</servlet-name>
-  	<servlet-class>com.br.servlets.AlterarContaClienteServlet</servlet-class>
+    <servlet-name>AlterarContaCliente</servlet-name>
+    <servlet-class>com.br.servlets.AlterarContaClienteServlet</servlet-class>
   </servlet>
   <servlet-mapping>
-  	<servlet-name>AlterarContaCliente</servlet-name>
-  	<url-pattern>/AlterarContaCliente</url-pattern>
+    <servlet-name>AlterarContaCliente</servlet-name>
+    <url-pattern>/AlterarContaCliente</url-pattern>
+  </servlet-mapping>
+  <servlet>
+  	<servlet-name>AlterarPedido</servlet-name>
+  	<servlet-class>com.br.servlets.AlterarPedidoServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>AlterarPedido</servlet-name>
+  	<url-pattern>/AlterarPedido</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>LoginSistema</welcome-file>
