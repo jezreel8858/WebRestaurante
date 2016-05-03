@@ -30,15 +30,11 @@
 				      <input style="margin-top: 15px;" type="password" class="form-control" name="tSenha" placeholder="Senha" required="required">
 				    </div>
 				  </div>
-				  <div>
-				  
-				  </div>
-				 
+								 
 				  <div class="form-group" >
 				    <div class="col-sm-offset-2 col-sm-10" style="margin-top: 30px;">
 				    	<a class="btn btn-info" href="cadastroCliente" role="button" >Cadastra-se</a>
-				      	<button type="submit" class="btn btn-info" style="margin-left: 126px;">Acessar</button>
-				      
+				      	<button type="submit" class="btn btn-info" style="margin-left: 126px;">Acessar</button>				      
 				    </div>
 				  </div>
 			</form>

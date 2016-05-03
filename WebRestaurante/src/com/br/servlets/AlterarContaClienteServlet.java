@@ -1,7 +1,6 @@
 package com.br.servlets;
 
 import java.io.IOException;
-import java.security.NoSuchAlgorithmException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -13,34 +12,25 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.br.model.Cliente;
 import com.br.model.Endereco;
-import com.br.model.Login;
 import com.br.services.ClienteService;
 
 
-public class CadastroClienteServlet extends HttpServlet {
-	
-
+public class AlterarContaClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
 
-	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		if(request.getSession().getAttribute("usuario") != null){
+		if(request.getSession().getAttribute("usuario") == null){
 			response.sendRedirect("LoginSistema");
 			return;
-		}
-	
+		}	
 		
-		request.getRequestDispatcher("cadastrocliente.jsp").forward(request, response);
-	
+		request.getRequestDispatcher("alterarcliente.jsp").forward(request, response);
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		Cliente usuario = (Cliente)request.getSession().getAttribute("usuario");
 		
-		
-		String login = request.getParameter("tLogin");
-		String senha = request.getParameter("tSenha");
 		String nome =  request.getParameter("tNome");
 		String telefone = request.getParameter("tTelefone");
 		String dataN = request.getParameter("tData");
@@ -59,20 +49,12 @@ public class CadastroClienteServlet extends HttpServlet {
 		String pais = request.getParameter("tPais");
 		String estado = request.getParameter("tEst");
 		String cidade = request.getParameter("tCidade");
-		Cliente cliente =  new Cliente();
-		cliente.setNome(nome);
-		cliente.setTelefone(telefone);
-		cliente.setLogin(new Login()); //tava dando erro aqui no hashe
 		
-		try {
-			cliente.createLogin(login, senha);
-		} catch (NoSuchAlgorithmException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		cliente.setDataCadastro(new Date());	
-		cliente.setDataNasc(dataNascimento);
-		cliente.setEmail(email);
+		usuario.setNome(nome);
+		usuario.setTelefone(telefone);
+			
+		usuario.setDataNasc(dataNascimento);
+		usuario.setEmail(email);
 		Endereco endereco = new Endereco();
 		endereco.setLogradouro(rua);
 		endereco.setNumero(numero);
@@ -82,11 +64,11 @@ public class CadastroClienteServlet extends HttpServlet {
 		endereco.setPais(pais);
 		endereco.setEstado(estado);
 		endereco.setCidade(cidade);
-		cliente.setEndereco(endereco);
-		cliente.setDesativado(false);
+		usuario.setEndereco(endereco);
 		
-		ClienteService.criar(cliente);
-		request.getRequestDispatcher("LoginSistema").forward(request, response);
+		ClienteService.atualizar(usuario);
+		request.setAttribute("mensagem", "Seus Dados Foram Alterados com Sucesso");
+		doGet(request, response);
 	}
 
 }

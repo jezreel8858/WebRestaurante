@@ -78,10 +78,10 @@
                 </div>
               </form>
         		<c:if test="${mensagem != null}">	
-				<div class="alert alert-success" role="alert" style="margin:auto; width: 50%;">
-  					${mensagem}.
-				</div>
-			</c:if>	
+					<div class="alert alert-success" role="alert" style="margin:auto; width: 50%;">
+	  					${mensagem}.
+					</div>
+				</c:if>	
     </section>
 
 <%@ include file="footer.jsp" %>

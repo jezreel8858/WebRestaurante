@@ -44,7 +44,6 @@ public class LoginServlet extends HttpServlet {
 		
 		
 		Usuario usuarioLogado = UsuarioService.procurarPorLoginSenha(login);
-		
 		if(usuarioLogado!=null){	
 			if(usuarioLogado instanceof Cliente){
 				request.getSession().setAttribute("home", "cliente");

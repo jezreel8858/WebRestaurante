@@ -32,6 +32,7 @@ public class ListarDeliveryServlet extends HttpServlet{
 		if(status!=null && idNumero != null){
 			if( !status.equals("Todos") ){
 				pedidos = DeliveryService.procurarPorStatus(usuario.getId(), status);
+				
 			} else if ( status.equals("Todos")){
 				pedidos = DeliveryService.procurarPorClienteId(usuario.getId());
 			}

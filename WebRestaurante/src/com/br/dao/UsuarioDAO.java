@@ -27,7 +27,7 @@ public class UsuarioDAO extends GenericDAO<Usuario>{
 	
 	public Usuario procurarLoginSenha(Login login){
 		try{
-		Query query = manager.createQuery("SELECT c FROM Usuario c WHERE c.login.login = :login and c.login.senha = :senha");
+		Query query = manager.createQuery("SELECT c FROM Usuario c WHERE c.login.login = :login and c.login.senha = :senha ");
 		query.setParameter("login",login.getLogin());
 		query.setParameter("senha",login.getSenha());
 		

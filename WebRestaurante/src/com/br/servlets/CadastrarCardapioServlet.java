@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.br.model.Cardapio;
 import com.br.model.Categoria;
+import com.br.model.Usuario;
 import com.br.services.CardapioService;
 import com.br.services.CategoriaService;
 
@@ -22,6 +23,7 @@ public class CadastrarCardapioServlet extends HttpServlet{
 			response.sendRedirect("LoginSistema");
 			return;
 		}
+
 		String id = request.getParameter("id");
 		
 		if(id != null){

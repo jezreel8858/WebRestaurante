@@ -1,6 +1,7 @@
 package com.br.servlets;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -16,6 +17,7 @@ import com.br.services.DeliveryService;
 public class DetalharDeliveryClienteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
+
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		if(request.getSession().getAttribute("usuario") == null){
 			response.sendRedirect("LoginSistema");
@@ -24,18 +26,18 @@ public class DetalharDeliveryClienteServlet extends HttpServlet {
 		
 		String idPedido = request.getParameter("id");
 		
-		Delivery p = new Delivery(Long.valueOf(idPedido));
-		Delivery pedido = DeliveryService.procurar(p);
-		List<ItemCardapio> itens = pedido.getItensCardapio();
-		ItemCardapio item = null;
+		Delivery ped = new Delivery(Long.valueOf(idPedido));
+		Delivery pedido = DeliveryService.procurar(ped);
+		List<ItemCardapio> itensPed = pedido.getItensCardapio();
+		List<ItemCardapio> itens = new ArrayList<>();
 		
-		for (ItemCardapio itemCardapio : itens) {
+		for (ItemCardapio itemCardapio : itensPed) {
 			if(itemCardapio.getPedido().getId()==pedido.getId()){
-				item = itemCardapio;
+				itens.add(itemCardapio);
 			}
 		}
 		
-		request.getSession().setAttribute("item",item);
+		request.getSession().setAttribute("itens",itens);
 		request.getRequestDispatcher("detalhardeliverycliente.jsp").forward(request, response);
 	}
 

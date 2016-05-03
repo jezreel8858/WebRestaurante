@@ -25,11 +25,13 @@
 	            </tr>
 	            </thead>
 	            <tbody>
-		            <tr>
+	             <c:forEach var="item" items="${itens}">
+		            <tr>		           
 		            	<td><c:out value="${item.cardapio.nome}" /></td>
 		            	<td><c:out value="${item.qtd}"/></td>
-		            	<td><c:out value="R$: ${item.qtd*item.cardapio.preco}"/></td>		                             
+		            	<td><c:out value="R$: ${item.qtd*item.cardapio.preco}"/></td>		            		                             
 		            </tr>
+		            </c:forEach>
 	            </tbody>
 	        </table>               	
         </div>       
