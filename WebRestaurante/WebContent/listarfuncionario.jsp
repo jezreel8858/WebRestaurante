@@ -35,8 +35,8 @@
 				<c:forEach var="funcionario" items="${funcionarios}">
 	            <tr>
 	                <th scope="row">${funcionario.nome}</th>
-	                <td><fmt:formatNumber type="number" value="${funcionario.cpf}" pattern="###.###.###-##" /></td>
-					<td>${funcionario.cargo.nome}</td>
+	                <td>${funcionario.cpf}</td>
+					<td>${funcionario.cargo.descricao}</td>
 					<td>${funcionario.salario}</td>
 					<td>
 						<a href="DetalharDeliveryCliente?id=${pedidos.id}" title="detalhar"><img src="image/detalhe.png" class="icon-tb"></a> 

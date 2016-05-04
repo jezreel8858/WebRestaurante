@@ -35,7 +35,7 @@
 				<c:forEach var="cliente" items="${clientes}">
 	            <tr>
 	                <th scope="row">${cliente.nome}</th>
-	                <td><fmt:formatNumber type="number" value="${cliente.endereco.cep}" pattern="#####-###" /></td>
+	                <td>${cliente.endereco.cep}</td>
 					<td>${cliente.endereco.logradouro}</td>
 					<td>${cliente.endereco.numero}</td>
 					<td>

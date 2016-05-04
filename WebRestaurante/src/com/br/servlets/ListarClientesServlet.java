@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.br.model.Cliente;
-import com.br.model.Mesa;
 import com.br.services.ClienteService;
-import com.br.services.MesaService;
 
 @WebServlet("/listarClientes")
 public class ListarClientesServlet extends HttpServlet{

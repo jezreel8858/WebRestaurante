@@ -43,7 +43,7 @@ public class ListarPedidosServlet extends HttpServlet {
 		request.setAttribute("tipo", tipo);
 		request.setAttribute("status", status);
 		
-		if(id != null)
+		
 		
 		if(status!=null && idNumero != null && tipo != null){
 			if(tipo.equals("Todos")){
